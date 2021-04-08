@@ -16,18 +16,22 @@ class _HomeScreenState extends State<HomeScreen> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: <Widget>[
-              SizedBox(
-                height: 10.0,
-              ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ReusableCard(
-                      color: Colors.grey,
                       cardHeigth: 150.0,
                       cardWidth: 360.0,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/wdblack.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -40,22 +44,50 @@ class _HomeScreenState extends State<HomeScreen> {
                     ReusableCard(
                       cardHeigth: 150.0,
                       cardWidth: 150.0,
-                      color: Colors.grey,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/nike.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                     ReusableCard(
                       cardHeigth: 150.0,
                       cardWidth: 150.0,
-                      color: Colors.lightBlue,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/elbise.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                     ReusableCard(
                       cardHeigth: 150.0,
                       cardWidth: 150.0,
-                      color: Colors.deepPurple,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/kulaklık.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                     ReusableCard(
                       cardHeigth: 150.0,
                       cardWidth: 150.0,
-                      color: Colors.purpleAccent,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/nikon.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -66,19 +98,40 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     ReusableCard(
-                      color: Colors.purple,
                       cardHeigth: 150.0,
                       cardWidth: 360.0,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/canta.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                     ReusableCard(
-                      color: Colors.blue,
                       cardHeigth: 150.0,
                       cardWidth: 360.0,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/kalem.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                     ReusableCard(
-                      color: Colors.purpleAccent,
                       cardHeigth: 150.0,
                       cardWidth: 360.0,
+                      cardChild: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                              image: AssetImage('images/elbise.jpeg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
                   ],
                 ),
