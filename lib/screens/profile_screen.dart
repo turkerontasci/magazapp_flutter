@@ -12,20 +12,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: Container(
         child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ReusableCard(
-                    color: Colors.grey,
-                    cardWidth: 350.0,
-                    cardHeigth: 250.0,
-                  ),
-                ),
-              ],
-            ),
-          ],
+          children: <Widget>[],
         ),
       ),
     );

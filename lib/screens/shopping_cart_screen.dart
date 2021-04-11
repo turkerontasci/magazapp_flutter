@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:magazapp_flutter/components/reusable_card.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -12,8 +13,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return Scaffold(
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text("Bildirimler"),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ReusableCard(
+                cardHeigth: 200.0,
+                color: Colors.grey.shade400,
+                cardChild: Column(
+                  children: <Widget>[],
+                ),
+              ),
+            )
           ],
         ),
       ),

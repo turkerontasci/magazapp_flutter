@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/screens/product_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
+                  children: <Widget>[
                     ReusableCard(
                       cardHeigth: 150.0,
                       cardWidth: 360.0,
@@ -42,6 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: <Widget>[
                     ReusableCard(
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductPage(),
+                          ),
+                        );
+                      },
                       cardHeigth: 150.0,
                       cardWidth: 150.0,
                       cardChild: Container(
@@ -60,8 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
-                              image: AssetImage('images/elbise.jpeg'),
-                              fit: BoxFit.cover),
+                            image: AssetImage('images/elbise.jpeg'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

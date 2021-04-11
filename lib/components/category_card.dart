@@ -5,16 +5,25 @@ class CategoryCard extends StatelessWidget {
   CategoryCard({
     @required this.assetImage,
     this.categoryTitle,
+    this.cardHeigth,
+    this.cardWidth,
+    this.fontSize,
+    this.onPress,
   });
 
   final AssetImage assetImage;
   final String categoryTitle;
+  final double cardHeigth;
+  final double cardWidth;
+  final double fontSize;
+  final Function onPress;
 
   @override
   Widget build(BuildContext context) {
     return ReusableCard(
-      cardHeigth: 175.0,
-      cardWidth: 175.0,
+      onPress: onPress,
+      cardHeigth: cardHeigth,
+      cardWidth: cardWidth,
       cardChild: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
@@ -33,9 +42,9 @@ class CategoryCard extends StatelessWidget {
                       blurRadius: 10.0,
                       color: Colors.black,
                       offset: Offset(5.0, 5.0),
-                    )
+                    ),
                   ],
-                  fontSize: 25.0,
+                  fontSize: fontSize,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),

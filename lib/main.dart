@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/screens/category_screen.dart';
 import 'package:magazapp_flutter/screens/home_screen.dart';
-import 'package:magazapp_flutter/screens/notification_screen.dart';
+import 'package:magazapp_flutter/screens/product_page.dart';
+import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:magazapp_flutter/screens/profile_screen.dart';
 
 void main() {
@@ -72,13 +73,13 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.menu),
             label: 'Kategoriler',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Bildirimler',
+            icon: Icon(Icons.shopping_cart),
+            label: 'Sepet',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
