@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/components/category_card.dart';
 
 class CategoryScreen extends StatefulWidget {
   @override
@@ -13,41 +14,69 @@ class _CategoryScreenState extends State<CategoryScreen> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          padding: EdgeInsets.all(5.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              ReusableCard(
-                color: Colors.grey,
-                cardHeigth: 150.0,
-                cardWidth: 360.0,
-              ),
-              ReusableCard(
-                color: Colors.grey,
-                cardHeigth: 150.0,
-                cardWidth: 360.0,
-              ),
-              ReusableCard(
-                color: Colors.grey,
-                cardHeigth: 150.0,
-                cardWidth: 360.0,
-              ),
-              ReusableCard(
-                color: Colors.grey,
-                cardHeigth: 150.0,
-                cardWidth: 360.0,
-              ),
-              ReusableCard(
-                color: Colors.grey,
-                cardHeigth: 150.0,
-                cardWidth: 360.0,
-              ),
-              ReusableCard(
-                color: Colors.grey,
-                cardHeigth: 150.0,
-                cardWidth: 360.0,
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: <Widget>[
+                    CategoryCard(
+                      categoryTitle: "Kadın Giyim",
+                      assetImage: AssetImage('images/elbise.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Aksesuar",
+                      assetImage: AssetImage('images/canta.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Elektronik",
+                      assetImage: AssetImage('images/wdblack.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Müzik",
+                      assetImage: AssetImage('images/guitar.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Spor",
+                      assetImage: AssetImage('images/nike.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Ev - Yaşam",
+                      assetImage: AssetImage('images/mobilya.jpeg'),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    CategoryCard(
+                      categoryTitle: "Erkek Giyim",
+                      assetImage: AssetImage('images/erkekgiyim.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Kişisel\nBakım",
+                      assetImage: AssetImage('images/kisiselbakim.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Outdoor",
+                      assetImage: AssetImage('images/outdoor2.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Kitap",
+                      assetImage: AssetImage('images/kitap.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Kırtasiye",
+                      assetImage: AssetImage('images/kalem.jpeg'),
+                    ),
+                    CategoryCard(
+                      categoryTitle: "Pet Shop",
+                      assetImage: AssetImage('images/kedigopek.jpeg'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
