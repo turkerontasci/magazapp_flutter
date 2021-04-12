@@ -56,3 +56,27 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({@required this.icon, @required this.onPressed, this.height, this.width});
+
+  final IconData icon;
+  final Function onPressed;
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: onPressed,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        width: width,
+        height: height,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
+  }
+}
