@@ -2,24 +2,47 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
+import 'package:magazapp_flutter/products/product.dart';
 
-class NotificationScreen extends StatefulWidget {
+class ShoppingCartScreen extends StatefulWidget {
   @override
-  _NotificationScreenState createState() => _NotificationScreenState();
+  _ShoppingCartScreenState createState() => _ShoppingCartScreenState();
 }
 
-class _NotificationScreenState extends State<NotificationScreen> {
+double price = 40.0;
+int itemCount = 1;
+
+class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
+  void _incrementCounter() {
+    setState(() {
+      itemCount++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      if (itemCount <= 1) {
+        itemCount = 1;
+      } else {
+        itemCount--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        constraints: BoxConstraints(
+          maxWidth: double.infinity,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ReusableCard(
-                color: Colors.grey.shade400,
+                color: Colors.grey.shade300,
                 cardChild: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -42,9 +65,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           child: Column(
                             children: <Widget>[
                               Text(
-                                'Fiyat : 40 TL',
+                                'Ayakkabı',
                                 style: TextStyle(
-                                  fontSize: 20.0,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                '${price * itemCount} TL',
+                                style: TextStyle(
+                                  fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
@@ -52,18 +86,26 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               Row(
                                 children: <Widget>[
                                   RoundIconButton(
-                                    icon: Icons.add,
+                                    fillColor: Colors.grey.shade50,
+                                    icon: Icons.remove,
+                                    onPressed: () {
+                                      _decrementCounter();
+                                    },
                                   ),
                                   Text(
-                                    '1',
+                                    '$itemCount',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
+                                      fontSize: 15.0,
                                       color: Colors.black,
                                     ),
                                   ),
                                   RoundIconButton(
+                                    fillColor: Colors.grey.shade50,
                                     icon: Icons.add,
+                                    onPressed: () {
+                                      _incrementCounter();
+                                    },
                                   ),
                                 ],
                               ),
@@ -73,6 +115,27 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       ],
                     ),
                   ],
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15.0, bottom: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        'Toplam : ${price * itemCount} TL',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

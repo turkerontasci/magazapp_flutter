@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _widgetOptions = [
     HomeScreen(),
     CategoryScreen(),
-    NotificationScreen(),
+    ShoppingCartScreen(),
     ProfileScreen()
   ];
 

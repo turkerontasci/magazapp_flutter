@@ -1,3 +1,5 @@
+import 'package:magazapp_flutter/products/product.dart';
+
 import 'reusable_card.dart';
 import 'package:flutter/material.dart';
 
@@ -58,12 +60,18 @@ class CategoryCard extends StatelessWidget {
 }
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPressed, this.height, this.width});
+  RoundIconButton(
+      {@required this.icon,
+      @required this.onPressed,
+      @required this.fillColor,
+      this.height,
+      this.width});
 
   final IconData icon;
   final Function onPressed;
   final double height;
   final double width;
+  final Color fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +84,7 @@ class RoundIconButton extends StatelessWidget {
         height: height,
       ),
       shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
+      fillColor: fillColor,
     );
   }
 }
