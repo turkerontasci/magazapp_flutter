@@ -7,8 +7,8 @@ class CategoryScreen extends StatefulWidget {
 }
 
 final double fontSize = 20.0;
-final double cardWidth = 180.0;
-final double cardHeigth = 180.0;
+final double cardWidth = 175.0;
+final double cardHeigth = 175.0;
 
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
@@ -23,6 +23,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
                         fontSize: fontSize,
@@ -41,6 +42,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
                         fontSize: fontSize,
@@ -59,6 +61,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
                         fontSize: fontSize,
@@ -77,6 +80,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
                         fontSize: fontSize,
@@ -95,6 +99,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
                         fontSize: fontSize,
@@ -113,6 +118,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
                         fontSize: fontSize,
