@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
+import 'package:magazapp_flutter/products/product.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

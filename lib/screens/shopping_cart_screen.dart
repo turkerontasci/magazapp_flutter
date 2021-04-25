@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/product.dart';
@@ -110,6 +111,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 ],
                               ),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 120.0),
+                          child: Icon(
+                            FontAwesomeIcons.trash,
                           ),
                         ),
                       ],

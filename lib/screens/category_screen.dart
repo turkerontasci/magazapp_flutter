@@ -16,7 +16,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
+          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(
