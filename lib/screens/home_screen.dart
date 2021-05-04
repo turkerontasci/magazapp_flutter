@@ -24,6 +24,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     ReusableCard(
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ProductPage(
+                              id: products[3]["id"],
+                              title: products[3]["title"],
+                              price: products[3]["price"],
+                              image: products[3]["image"],
+                            ),
+                          ),
+                        );
+                      },
                       cardHeigth: 150.0,
                       cardWidth: 360.0,
                       cardChild: Container(
@@ -42,109 +55,66 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.only(left: 5.0),
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: <Widget>[
-                    ReusableCard(
-                      onPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductPage(),
-                          ),
-                        );
-                      },
-                      cardHeigth: 150.0,
-                      cardWidth: 150.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('images/nike.jpeg'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ),
-                    ReusableCard(
-                      cardHeigth: 150.0,
-                      cardWidth: 150.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                            image: AssetImage('images/elbise.jpeg'),
-                            fit: BoxFit.cover,
+                  children: List.generate(products_row.length, (index) =>
+                      ReusableCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductPage(
+                                id: products_row[index]["id"],
+                                title: products_row[index]["title"],
+                                price: products_row[index]["price"],
+                                image: products_row[index]["image"],
+                              ),
+                            ),
+                          );
+                        },
+                        cardHeigth: 150.0,
+                        cardWidth: 150.0,
+                        cardChild: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(
+                                image: AssetImage(products_row[index]["image"]),
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
-                    ),
-                    ReusableCard(
-                      cardHeigth: 150.0,
-                      cardWidth: 150.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('images/kulaklık.jpeg'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ),
-                    ReusableCard(
-                      cardHeigth: 150.0,
-                      cardWidth: 150.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('images/nikon.jpeg'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(5.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    ReusableCard(
-                      cardHeigth: 150.0,
-                      cardWidth: 360.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('images/canta.jpeg'),
-                              fit: BoxFit.cover),
+                  children: List.generate(products.length, (index) =>
+                      ReusableCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductPage(
+                                id: products[index]["id"],
+                                title: products[index]["title"],
+                                price: products[index]["price"],
+                                image: products[index]["image"],
+                              ),
+                            ),
+                          );
+                        },
+                        cardHeigth: 150.0,
+                        cardWidth: 360.0,
+                        cardChild: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(
+                                image: AssetImage(products[index]["image"]),
+                                fit: BoxFit.cover),
+                          ),
                         ),
                       ),
-                    ),
-                    ReusableCard(
-                      cardHeigth: 150.0,
-                      cardWidth: 360.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('images/kalem.jpeg'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ),
-                    ReusableCard(
-                      cardHeigth: 150.0,
-                      cardWidth: 360.0,
-                      cardChild: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('images/elbise.jpeg'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ],
@@ -154,3 +124,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

@@ -114,7 +114,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 120.0),
+                          padding: const EdgeInsets.only(left: 80.0),
                           child: Icon(
                             FontAwesomeIcons.trash,
                           ),

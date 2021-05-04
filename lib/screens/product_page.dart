@@ -6,6 +6,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/products/product.dart';
 
 class ProductPage extends StatefulWidget {
+
+  final int id;
+  final String title;
+  final String image;
+  final double price;
+
+  ProductPage({this.id, this.title, this.image, this.price});
+
   @override
   _ProductPageState createState() => _ProductPageState();
 }
@@ -57,7 +65,7 @@ class _ProductPageState extends State<ProductPage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.0),
                                   image: DecorationImage(
-                                    image: AssetImage('images/nike.jpeg'),
+                                    image: AssetImage(widget.image),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -67,7 +75,7 @@ class _ProductPageState extends State<ProductPage> {
                           Column(
                             children: [
                               Text(
-                                'Ayakkabı',
+                                widget.title,
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
@@ -78,7 +86,7 @@ class _ProductPageState extends State<ProductPage> {
                                 height: 5.0,
                               ),
                               Text(
-                                '$price TL',
+                                '${widget.price} TL',
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
@@ -129,7 +137,7 @@ class _ProductPageState extends State<ProductPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          'Toplam : ${price * itemCount} TL',
+                          'Toplam : ${widget.price * itemCount} TL',
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
