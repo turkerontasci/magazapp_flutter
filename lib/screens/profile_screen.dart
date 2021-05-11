@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/screens/product_page.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -12,7 +13,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: Container(
         child: Column(
-          children: <Widget>[],
+          children: <Widget>[
+          ],
         ),
       ),
     );

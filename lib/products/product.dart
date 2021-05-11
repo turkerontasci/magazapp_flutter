@@ -71,16 +71,16 @@ import 'package:flutter/material.dart';
   List products_row = [
     {
       "id": 1,
-      "title": "Sırt Çantası",
-      "price": 300.0,
-      "image": "images/canta.jpeg",
+      "title": "Nikon D800",
+      "price": 5000.0,
+      "image": "images/nikon.jpeg",
     },
 
     {
       "id": 2,
-      "title": "Elbise",
-      "price": 100.0,
-      "image": "images/elbise.jpeg",
+      "title": "Nike Ayakkabı",
+      "price": 300.0,
+      "image": "images/nike.jpeg",
     },
 
     {
@@ -101,5 +101,28 @@ import 'package:flutter/material.dart';
       "title": "Boya Kalem Set",
       "price": 35.0,
       "image": "images/kalem.jpeg",
+    },
+  ];
+
+  List cart_list = [
+    {
+      "id": 1,
+      "title": "Nikon D800",
+      "price": 5000.0,
+      "image": "images/nikon.jpeg",
+    },
+
+    {
+      "id": 2,
+      "title": "Nike Ayakkabı",
+      "price": 300.0,
+      "image": "images/nike.jpeg",
+    },
+
+    {
+      "id": 3,
+      "title": "Kulaklık",
+      "price": 300.0,
+      "image": "images/kulaklık.jpeg",
     },
   ];

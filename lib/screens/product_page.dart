@@ -3,14 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
+import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
+import 'package:toast/toast.dart';
 
 class ProductPage extends StatefulWidget {
+
 
   final int id;
   final String title;
   final String image;
   final double price;
+
+
 
   ProductPage({this.id, this.title, this.image, this.price});
 
@@ -20,6 +26,8 @@ class ProductPage extends StatefulWidget {
 
 double price = 40.0;
 int itemCount = 1;
+
+List<CartList> cartList = [];
 
 class _ProductPageState extends State<ProductPage> {
 
@@ -38,6 +46,20 @@ class _ProductPageState extends State<ProductPage> {
       }
     });
   }
+
+  void addItemToList() {
+    setState(() {
+      cartList.add(
+        CartList(
+          id: widget.id,
+          title: widget.title,
+          price: widget.price,
+          image: widget.image,
+        ),
+      );
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -139,12 +161,23 @@ class _ProductPageState extends State<ProductPage> {
                         Text(
                           'Toplam : ${widget.price * itemCount} TL',
                           style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 17.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
                         ),
                         ReusableCard(
+                          onPress: (){
+                            addItemToList();
+                            Toast.show(
+                                "Ürün sepete eklendi",
+                                context,
+                                duration: Toast.LENGTH_SHORT,
+                                gravity:  Toast.BOTTOM,
+                              backgroundColor: Colors.grey.shade300,
+                              textColor: Colors.black,
+                            );
+                          },
                             cardHeigth: 50.0,
                             cardWidth: 150.0,
                             color: Colors.pink,

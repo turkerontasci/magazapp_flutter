@@ -4,16 +4,30 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/product.dart';
+import 'package:magazapp_flutter/screens/product_page.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
+
+  final int id;
+  final String title;
+  final String image;
+  final double price;
+  final String warning = "Sepetiniz boş";
+
+
+  
+  ShoppingCartScreen({this.id, this.title, this.image, this.price});
+
   @override
   _ShoppingCartScreenState createState() => _ShoppingCartScreenState();
 }
 
 double price = 40.0;
 int itemCount = 1;
+int deleteId;
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
+
   void _incrementCounter() {
     setState(() {
       itemCount++;
@@ -30,125 +44,159 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     });
   }
 
+  void deleteItemToList() {
+    setState(() {
+      cartList.removeLast();
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        constraints: BoxConstraints(
-          maxWidth: double.infinity,
+
+    if(cartList.isEmpty){
+      return Center(
+        child: Text(
+          "Sepetiniz Boş"
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ReusableCard(
-                color: Colors.grey.shade300,
-                cardChild: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        ReusableCard(
-                          cardHeigth: 100.0,
-                          cardWidth: 100.0,
-                          cardChild: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                image: AssetImage('images/nike.jpeg'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Column(
+      );
+    } else {
+      return Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
+            constraints: BoxConstraints(
+              maxWidth: double.infinity,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Column(
+                    children: List.generate(cartList.length, (index) => ReusableCard(
+                      color: Colors.grey.shade300,
+                      cardChild: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
                             children: <Widget>[
-                              Text(
-                                'Ayakkabı',
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                '${price * itemCount} TL',
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  RoundIconButton(
-                                    fillColor: Colors.grey.shade50,
-                                    icon: Icons.remove,
-                                    onPressed: () {
-                                      _decrementCounter();
-                                    },
-                                  ),
-                                  Text(
-                                    '$itemCount',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0,
-                                      color: Colors.black,
+                              ReusableCard(
+                                cardHeigth: 100.0,
+                                cardWidth: 100.0,
+                                cardChild: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    image: DecorationImage(
+                                      image: AssetImage(cartList[index].image),
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  RoundIconButton(
-                                    fillColor: Colors.grey.shade50,
-                                    icon: Icons.add,
-                                    onPressed: () {
-                                      _incrementCounter();
-                                    },
+                                ),
+                              ),
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      cartList[index].title,
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
+                                    Text(
+                                      '${cartList[index].price * itemCount} TL',
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        RoundIconButton(
+                                          fillColor: Colors.grey.shade50,
+                                          icon: Icons.remove,
+                                          onPressed: () {
+                                            _decrementCounter();
+                                            print("${cartList[0].id}");
+                                            print("${cartList[0].title}");
+                                            print("${cartList[0].price}");
+                                            print("${cartList[0].image}");
+                                            print("${cartList.length}");
+                                          },
+                                        ),
+                                        Text(
+                                          '$itemCount',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15.0,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        RoundIconButton(
+                                          fillColor: Colors.grey.shade50,
+                                          icon: Icons.add,
+                                          onPressed: () {
+                                            _incrementCounter();
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 80.0),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    deleteItemToList();
+                                  },
+                                  child: Icon(
+                                    FontAwesomeIcons.trash,
                                   ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 80.0),
-                          child: Icon(
-                            FontAwesomeIcons.trash,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0, bottom: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        'Toplam : ${price * itemCount} TL',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 15.0, bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Text(
+                            'Toplam : ${cartList[0].price} TL',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

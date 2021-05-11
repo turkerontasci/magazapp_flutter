@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
-                              image: AssetImage('images/guitar.jpeg'),
+                              image: AssetImage(products[3]["image"]),
                               fit: BoxFit.cover),
                         ),
                       ),
