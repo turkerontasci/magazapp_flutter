@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
-import 'package:magazapp_flutter/products/product.dart';
-import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:toast/toast.dart';
 
 class ProductPage extends StatefulWidget {
@@ -24,7 +21,6 @@ class ProductPage extends StatefulWidget {
   _ProductPageState createState() => _ProductPageState();
 }
 
-double price = 40.0;
 int itemCount = 1;
 
 List<CartList> cartList = [];
@@ -46,6 +42,8 @@ class _ProductPageState extends State<ProductPage> {
       }
     });
   }
+
+
 
   void addItemToList() {
     setState(() {
@@ -183,7 +181,7 @@ class _ProductPageState extends State<ProductPage> {
                             color: Colors.pink,
                           cardChild: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: <Widget>[
                               Text(
                                 "Sepete Ekle",
                                 style: TextStyle(

@@ -15,16 +15,14 @@ class ShoppingCartScreen extends StatefulWidget {
   final String warning = "Sepetiniz boş";
 
 
-  
+
   ShoppingCartScreen({this.id, this.title, this.image, this.price});
 
   @override
   _ShoppingCartScreenState createState() => _ShoppingCartScreenState();
 }
 
-double price = 40.0;
 int itemCount = 1;
-int deleteId;
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
 
@@ -50,6 +48,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     });
   }
 
+  void totalPriceCalc() {
+    double totalPrice;
+    for (int i = 1; i <= cartList.length; i++) {
+      totalPrice = totalPrice + cartList[i-0].price;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     if(cartList.isEmpty){
       return Center(
         child: Text(
-          "Sepetiniz Boş"
+          "Sepetiniz Boş",
+              style: TextStyle(
+                fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+        ),
         ),
       );
     } else {
@@ -122,11 +130,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           icon: Icons.remove,
                                           onPressed: () {
                                             _decrementCounter();
-                                            print("${cartList[0].id}");
-                                            print("${cartList[0].title}");
-                                            print("${cartList[0].price}");
-                                            print("${cartList[0].image}");
-                                            print("${cartList.length}");
                                           },
                                         ),
                                         Text(
@@ -180,7 +183,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            'Toplam : ${cartList[0].price} TL',
+                            'Toplam : ${cartList[0].price}  TL',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
