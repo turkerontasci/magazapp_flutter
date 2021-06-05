@@ -104,7 +104,7 @@ import 'package:flutter/material.dart';
     },
   ];
 
-  List cart_list = [
+  List last_list = [
     {
       "id": 1,
       "title": "Nikon D800",
