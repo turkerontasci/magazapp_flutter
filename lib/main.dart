@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
+        backgroundColor: Colors.white,
       ),
       home: MainPage(),
     );
@@ -62,6 +63,7 @@ class _MainPageState extends State<MainPage> {
       ),
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0.0,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         showUnselectedLabels: false,

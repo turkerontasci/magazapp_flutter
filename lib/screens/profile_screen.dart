@@ -71,6 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     "Siparişlerim",
                     style: TextStyle(
+                      color: Colors.black87,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -85,6 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     "Kargolarım",
                     style: TextStyle(
+                      color: Colors.black87,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -99,6 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     "İstek Listem",
                     style: TextStyle(
+                      color: Colors.black87,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -113,6 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     "İadelerim",
                     style: TextStyle(
+                      color: Colors.black87,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -127,6 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     "Ayarlar",
                     style: TextStyle(
+                      color: Colors.black87,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),

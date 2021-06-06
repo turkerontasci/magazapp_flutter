@@ -6,13 +6,16 @@ class ReusableCard extends StatelessWidget {
       this.cardChild,
       this.onPress,
       this.cardWidth,
-      this.cardHeigth});
+      this.cardHeigth,
+        this.gradient
+      });
 
   final Color color;
   final Widget cardChild;
   final Function onPress;
   final double cardWidth;
   final double cardHeigth;
+  final Gradient gradient;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,20 @@ class ReusableCard extends StatelessWidget {
         margin: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
           color: color,
+          gradient: gradient,
           borderRadius: BorderRadius.circular(10.0),
         ),
       ),
     );
   }
 }
+
+
+/*
+
+gradient: LinearGradient(
+begin: Alignment.centerLeft,
+end: Alignment.centerRight,
+colors: [Colors.blueGrey.shade300, Colors.blueGrey, Colors.blueGrey.shade300])
+
+*/
