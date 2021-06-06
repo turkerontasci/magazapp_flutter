@@ -126,3 +126,32 @@ import 'package:flutter/material.dart';
       "image": "images/kulaklık.jpeg",
     },
   ];
+
+  List last_orders = [
+    {
+      "id": 1,
+      "title": "Nikon D800",
+      "price": 5000.0,
+      "image": "images/nikon.jpeg",
+      "qty": 1,
+      "date": "02.06.2021",
+    },
+
+    {
+      "id": 2,
+      "title": "Nike Ayakkabı",
+      "price": 300.0,
+      "image": "images/nike.jpeg",
+      "qty": 1,
+      "date": "22.05.2021",
+    },
+
+    {
+      "id": 3,
+      "title": "Kulaklık",
+      "price": 300.0,
+      "image": "images/kulaklık.jpeg",
+      "qty": 2,
+      "date": "15.05.2021",
+    },
+];

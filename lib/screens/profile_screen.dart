@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 import 'package:magazapp_flutter/products/product.dart';
+import 'package:magazapp_flutter/settings_screens/my_orders.dart';
+import 'package:magazapp_flutter/settings_screens/order_track.dart';
+import 'package:magazapp_flutter/settings_screens/returns.dart';
+import 'package:magazapp_flutter/settings_screens/settings_page.dart';
+import 'package:magazapp_flutter/settings_screens/wishlist.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -55,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
-                                image: AssetImage(products_row[index]["image"]),
+                                image: AssetImage(last_list[index]["image"]),
                                 fit: BoxFit.cover),
                           ),
                         ),
@@ -64,7 +69,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               ReusableCard(
-                color: Colors.blueGrey.shade200,
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => MyOrders(),),);
+                },
+                color: Colors.blueGrey.shade100,
                 cardHeigth: 50.0,
                 cardWidth: 250.0,
                 cardChild: Center(
@@ -79,7 +87,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               ReusableCard(
-                color: Colors.blueGrey.shade200,
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => OrderTrack(),),);
+                },
+                color: Colors.blueGrey.shade100,
                 cardHeigth: 50.0,
                 cardWidth: 250.0,
                 cardChild: Center(
@@ -94,7 +105,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               ReusableCard(
-                color: Colors.blueGrey.shade200,
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => WishList(),),);
+                },
+                color: Colors.blueGrey.shade100,
                 cardHeigth: 50.0,
                 cardWidth: 250.0,
                 cardChild: Center(
@@ -109,7 +123,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               ReusableCard(
-                color: Colors.blueGrey.shade200,
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => Returns(),),);
+                },
+                color: Colors.blueGrey.shade100,
                 cardHeigth: 50.0,
                 cardWidth: 250.0,
                 cardChild: Center(
@@ -124,7 +141,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               ReusableCard(
-                color: Colors.blueGrey.shade200,
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => SettingsPage(),),);
+                },
+                color: Colors.blueGrey.shade100,
                 cardHeigth: 50.0,
                 cardWidth: 250.0,
                 cardChild: Center(
