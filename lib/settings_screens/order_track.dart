@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class OrderTrack extends StatefulWidget {
-
-
   @override
   _OrderTrackState createState() => _OrderTrackState();
 }
@@ -12,12 +10,13 @@ class _OrderTrackState extends State<OrderTrack> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Padding(padding: const EdgeInsets.all(10.0),),
-            ],
+        child: Center(
+          child: Text(
+            "Kargonuz bulunmamaktadır.",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
           ),
         ),
       ),

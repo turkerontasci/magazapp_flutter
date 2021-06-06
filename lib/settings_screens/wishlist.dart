@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/products/product.dart';
+import 'package:magazapp_flutter/screens/product_page.dart';
 
 class WishList extends StatefulWidget {
+  final int id;
+  final String title;
+  final String image;
+  final double price;
+
+  WishList({this.id, this.title, this.image, this.price});
 
   @override
   _WishListState createState() => _WishListState();
@@ -15,7 +24,80 @@ class _WishListState extends State<WishList> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Padding(padding: const EdgeInsets.all(10.0),),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  "İstek Listem : ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: List.generate(
+                  wish_list.length,
+                  (index) => ReusableCard(
+                    color: Colors.blueGrey.shade50,
+                    cardChild: Row(
+                      children: <Widget>[
+                        ReusableCard(
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ProductPage(
+                                  id: wish_list[index]["id"],
+                                  title: wish_list[index]["title"],
+                                  price: wish_list[index]["price"],
+                                  image: wish_list[index]["image"],
+                                ),
+                              ),
+                            );
+                          },
+                          cardHeigth: 100.0,
+                          cardWidth: 100.0,
+                          cardChild: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                  image: AssetImage(wish_list[index]["image"]),
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                wish_list[index]["title"],
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                '${wish_list[index]["price"]} TL',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
