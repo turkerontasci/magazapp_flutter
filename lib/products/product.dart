@@ -91,7 +91,7 @@ import 'package:flutter/material.dart';
 
     {
       "id": 4,
-      "title": "Fender American Telecaster",
+      "title": "Fender Telecaster",
       "price": 12000.0,
       "image": "images/guitar.jpeg",
     },

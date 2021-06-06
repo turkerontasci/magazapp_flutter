@@ -56,30 +56,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(products_row.length, (index) =>
-                      ReusableCard(
-                        onPress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => ProductPage(
-                                id: products_row[index]["id"],
-                                title: products_row[index]["title"],
-                                price: products_row[index]["price"],
-                                image: products_row[index]["image"],
+                      Column(
+                        children: [
+                          ReusableCard(
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => ProductPage(
+                                    id: products_row[index]["id"],
+                                    title: products_row[index]["title"],
+                                    price: products_row[index]["price"],
+                                    image: products_row[index]["image"],
+                                  ),
+                                ),
+                              );
+                            },
+                            cardHeigth: 150.0,
+                            cardWidth: 150.0,
+                            cardChild: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                    image: AssetImage(products_row[index]["image"]),
+                                    fit: BoxFit.cover),
                               ),
                             ),
-                          );
-                        },
-                        cardHeigth: 150.0,
-                        cardWidth: 150.0,
-                        cardChild: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            image: DecorationImage(
-                                image: AssetImage(products_row[index]["image"]),
-                                fit: BoxFit.cover),
                           ),
-                        ),
+                          Text(
+                            "${products_row[index]["price"]} TL",
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            products_row[index]["title"],
+                          ),
+                        ],
                       ),
                   ),
                 ),
@@ -89,30 +103,52 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: List.generate(products.length, (index) =>
-                      ReusableCard(
-                        onPress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => ProductPage(
-                                id: products[index]["id"],
-                                title: products[index]["title"],
-                                price: products[index]["price"],
-                                image: products[index]["image"],
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ReusableCard(
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => ProductPage(
+                                    id: products[index]["id"],
+                                    title: products[index]["title"],
+                                    price: products[index]["price"],
+                                    image: products[index]["image"],
+                                  ),
+                                ),
+                              );
+                            },
+                            cardHeigth: 150.0,
+                            cardWidth: 360.0,
+                            cardChild: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                    image: AssetImage(products[index]["image"]),
+                                    fit: BoxFit.cover),
                               ),
                             ),
-                          );
-                        },
-                        cardHeigth: 150.0,
-                        cardWidth: 360.0,
-                        cardChild: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            image: DecorationImage(
-                                image: AssetImage(products[index]["image"]),
-                                fit: BoxFit.cover),
                           ),
-                        ),
+                          Column(
+                            children: [
+                              Text(
+                                "${products[index]["price"]} TL",
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                products[index]["title"],
+                              ),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                   ),
                 ),
