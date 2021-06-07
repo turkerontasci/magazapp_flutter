@@ -53,6 +53,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 45.0,
         title: Text(
           "Magazapp",
           style: TextStyle(

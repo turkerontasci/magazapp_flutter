@@ -63,140 +63,137 @@ class _ProductPageState extends State<ProductPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ReusableCard(
-                  color: Colors.grey.shade300,
-                  cardChild: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: ReusableCard(
-                              cardHeigth: 300.0,
-                              cardWidth: 300.0,
-                              cardChild: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  image: DecorationImage(
-                                    image: AssetImage(widget.image),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                widget.title,
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                '${widget.price} TL',
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  RoundIconButton(
-                                    fillColor: Colors.grey.shade50,
-                                    icon: Icons.remove,
-                                    onPressed: () {
-                                      _decrementCounter();
-                                    },
-                                  ),
-                                  Text(
-                                    '$itemCount',
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: ReusableCard(
+                        color: Colors.grey.shade300,
+                        cardChild: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: Text(
+                                    widget.title,
                                     style: TextStyle(
+                                      fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15.0,
                                       color: Colors.black,
                                     ),
                                   ),
-                                  RoundIconButton(
-                                    fillColor: Colors.grey.shade50,
-                                    icon: Icons.add,
-                                    onPressed: () {
-                                      _incrementCounter();
-                                    },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5.0),
+                                  child: ReusableCard(
+                                    cardHeigth: 300.0,
+                                    cardWidth: 300.0,
+                                    cardChild: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        image: DecorationImage(
+                                          image: AssetImage(widget.image),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                                ),
+                                Container(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0, bottom: 5.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            RoundIconButton(
+                                              fillColor: Colors.grey.shade50,
+                                              icon: Icons.remove,
+                                              onPressed: () {
+                                                _decrementCounter();
+                                              },
+                                            ),
+                                            Text(
+                                              '$itemCount',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15.0,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            RoundIconButton(
+                                              fillColor: Colors.grey.shade50,
+                                              icon: Icons.add,
+                                              onPressed: () {
+                                                _incrementCounter();
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          '${widget.price * itemCount} TL',
+                                          style: TextStyle(
+                                            fontSize: 17.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        ReusableCard(
+                                          onPress: (){
+                                            addItemToList();
+                                            Toast.show(
+                                              "Ürün sepete eklendi",
+                                              context,
+                                              duration: Toast.LENGTH_SHORT,
+                                              gravity:  Toast.BOTTOM,
+                                              backgroundColor: Colors.grey.shade300,
+                                              textColor: Colors.black,
+                                            );
+                                          },
+                                          cardHeigth: 50.0,
+                                          cardWidth: 150.0,
+                                          color: Colors.pink,
+                                          cardChild: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Text(
+                                                "Sepete Ekle",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 15.0, bottom: 8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Text(
-                          'Toplam : ${widget.price * itemCount} TL',
-                          style: TextStyle(
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        ReusableCard(
-                          onPress: (){
-                            addItemToList();
-                            Toast.show(
-                                "Ürün sepete eklendi",
-                                context,
-                                duration: Toast.LENGTH_SHORT,
-                                gravity:  Toast.BOTTOM,
-                              backgroundColor: Colors.grey.shade300,
-                              textColor: Colors.black,
-                            );
-                          },
-                            cardHeigth: 50.0,
-                            cardWidth: 150.0,
-                            color: Colors.pink,
-                          cardChild: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                "Sepete Ekle",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              Column(
+                children: <Widget>[
+                  _tabSection(context),
+                ],
               ),
             ],
           ),
@@ -204,4 +201,52 @@ class _ProductPageState extends State<ProductPage> {
       ),
     );
   }
+}
+
+Widget _tabSection(BuildContext context) {
+  return DefaultTabController(
+    length: 3,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          color: Colors.grey.shade300,
+          child: TabBar(
+              tabs: [
+            Tab(text: "Özellikler"),
+            Tab(text: "Açıklama"),
+            Tab(text: "Yorumlar"),
+          ],
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.black26,
+
+          ),
+        ),
+        Container(
+          //Add this to give height
+          height: MediaQuery.of(context).size.height,
+          child: TabBarView(children: [
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0, top: 5.0),
+                child: Text("Ürün Özellikleri :"),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0, top: 5.0),
+                child: Text("Ürün Açıklaması :"),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0, top: 5.0),
+                child: Text("Kullanıcı Yorumları :"),
+              ),
+            ),
+          ]),
+        ),
+      ],
+    ),
+  );
 }

@@ -11,12 +11,13 @@ class _ReturnsState extends State<Returns> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Padding(padding: const EdgeInsets.all(10.0),),
-            ],
+        child: Center(
+          child: Text(
+            "Devam eden iade işleminiz bulunmamaktadır.",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
           ),
         ),
       ),
