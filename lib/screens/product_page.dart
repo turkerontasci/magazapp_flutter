@@ -43,8 +43,6 @@ class _ProductPageState extends State<ProductPage> {
     });
   }
 
-
-
   void addItemToList() {
     setState(() {
       cartList.add(
@@ -57,7 +55,6 @@ class _ProductPageState extends State<ProductPage> {
       );
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +146,7 @@ class _ProductPageState extends State<ProductPage> {
                                           ),
                                         ),
                                         ReusableCard(
-                                          onPress: (){
+                                          onPress: () {
                                             addItemToList();
                                             Toast.show(
                                               "Ürün sepete eklendi",

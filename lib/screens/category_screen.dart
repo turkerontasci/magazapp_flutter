@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:magazapp_flutter/category_pages/mens_wear.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
+import 'package:magazapp_flutter/products/category_product.dart';
+import 'package:magazapp_flutter/category_pages/womens_wear.dart';
 
 class CategoryScreen extends StatefulWidget {
   @override
@@ -26,6 +29,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => WomensWear(),
+                            ),
+                          );
+                        },
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
@@ -33,6 +44,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         assetImage: AssetImage('images/elbise.jpeg'),
                       ),
                       CategoryCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => MensWear(),
+                            ),
+                          );
+                        },
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,

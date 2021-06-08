@@ -25,6 +25,8 @@ flutter:
 
   assets:
     - images/
+    - images/womens_wear_images/
+    - images/mens_wear_images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

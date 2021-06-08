@@ -72,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            cardHeigth: 150.0,
-                            cardWidth: 150.0,
+                            cardHeigth: 120.0,
+                            cardWidth: 120.0,
                             cardChild: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
