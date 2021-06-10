@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:magazapp_flutter/category_pages/accessories.dart';
+import 'package:magazapp_flutter/category_pages/electronics.dart';
+import 'package:magazapp_flutter/category_pages/home_design.dart';
 import 'package:magazapp_flutter/category_pages/mens_wear.dart';
+import 'package:magazapp_flutter/category_pages/personal_care.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/category_pages/womens_wear.dart';
@@ -41,7 +45,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Kadın Giyim",
-                        assetImage: AssetImage('images/elbise.jpeg'),
+                        assetImage: AssetImage('images/category_images/elbise.jpeg'),
                       ),
                       CategoryCard(
                         onPress: () {
@@ -56,7 +60,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Erkek Giyim",
-                        assetImage: AssetImage('images/erkekgiyim.jpeg'),
+                        assetImage: AssetImage('images/category_images/erkekgiyim.jpeg'),
                       ),
                     ],
                   ),
@@ -64,18 +68,34 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => Accessories(),
+                            ),
+                          );
+                        },
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Aksesuar",
-                        assetImage: AssetImage('images/canta.jpeg'),
+                        assetImage: AssetImage('images/category_images/canta.jpeg'),
                       ),
                       CategoryCard(
+                        onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => Electronics(),
+                          ),
+                        );
+                      },
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Elektronik",
-                        assetImage: AssetImage('images/wdblack.jpeg'),
+                        assetImage: AssetImage('images/category_images/wdblack.jpeg'),
                       ),
                     ],
                   ),
@@ -83,18 +103,34 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CategoryCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => HomeDesign(),
+                            ),
+                          );
+                        },
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Ev - Yaşam",
-                        assetImage: AssetImage('images/mobilya.jpeg'),
+                        assetImage: AssetImage('images/category_images/mobilya.jpeg'),
                       ),
                       CategoryCard(
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => PersonalCare(),
+                            ),
+                          );
+                        },
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Kişisel\nBakım",
-                        assetImage: AssetImage('images/kisiselbakim.jpeg'),
+                        assetImage: AssetImage('images/category_images/kisiselbakim.jpeg'),
                       ),
                     ],
                   ),
@@ -106,14 +142,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Müzik",
-                        assetImage: AssetImage('images/guitar.jpeg'),
+                        assetImage: AssetImage('images/category_images/guitar.jpeg'),
                       ),
                       CategoryCard(
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Spor",
-                        assetImage: AssetImage('images/nike.jpeg'),
+                        assetImage: AssetImage('images/category_images/nike.jpeg'),
                       ),
                     ],
                   ),
@@ -125,14 +161,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Outdoor",
-                        assetImage: AssetImage('images/outdoor2.jpeg'),
+                        assetImage: AssetImage('images/category_images/outdoor2.jpeg'),
                       ),
                       CategoryCard(
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Kitap",
-                        assetImage: AssetImage('images/kitap.jpeg'),
+                        assetImage: AssetImage('images/category_images/kitap.jpeg'),
                       ),
                     ],
                   ),
@@ -144,14 +180,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Kırtasiye",
-                        assetImage: AssetImage('images/kalem.jpeg'),
+                        assetImage: AssetImage('images/category_images/kalem.jpeg'),
                       ),
                       CategoryCard(
                         fontSize: fontSize,
                         cardWidth: cardWidth,
                         cardHeigth: cardHeigth,
                         categoryTitle: "Pet Shop",
-                        assetImage: AssetImage('images/kedigopek.jpeg'),
+                        assetImage: AssetImage('images/category_images/kedigopek.jpeg'),
                       ),
                     ],
                   ),

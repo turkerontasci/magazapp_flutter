@@ -14,6 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^8.11.0
   toast: ^0.1.5
+  palette_generator: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +28,7 @@ flutter:
     - images/
     - images/womens_wear_images/
     - images/mens_wear_images/
+    - images/category_images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

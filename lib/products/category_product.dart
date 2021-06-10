@@ -21,7 +21,7 @@ List womens_wear_list = [
     "id": 4,
     "title": "Günlük Elbise 4",
     "price": 300.0,
-    "image": "images/elbise.jpeg",
+    "image": "images/category_images/elbise.jpeg",
   },
   {
     "id": 5,
