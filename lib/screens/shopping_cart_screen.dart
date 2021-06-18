@@ -13,10 +13,11 @@ class ShoppingCartScreen extends StatefulWidget {
   final String image;
   final double price;
   final String warning = "Sepetiniz boş";
+  final double totalPriceClc;
 
 
 
-  ShoppingCartScreen({this.id, this.title, this.image, this.price});
+  ShoppingCartScreen({this.id, this.title, this.image, this.price, this.totalPriceClc});
 
   @override
   _ShoppingCartScreenState createState() => _ShoppingCartScreenState();
@@ -48,13 +49,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     });
   }
 
-  void totalPriceCalc() {
-    double totalPrice;
-    for (int i = 1; i <= cartList.length; i++) {
-      totalPrice = totalPrice + cartList[i-0].price;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
 
@@ -69,6 +63,19 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         ),
       );
     } else {
+
+      double totalCalculator() {
+        double totalPrice = 0.0;
+        if(cartList.isEmpty) {
+          totalPrice = 0.0;
+        } else {
+        for (int i = 0; i < cartList.length; i++) {
+            totalPrice += cartList[i].price;
+          }
+        }
+        return totalPrice;
+      }
+
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
@@ -183,7 +190,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            'Toplam : ${cartList[0].price}  TL',
+                            'Toplam : ${totalCalculator()} TL',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,

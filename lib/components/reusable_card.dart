@@ -7,7 +7,8 @@ class ReusableCard extends StatelessWidget {
       this.onPress,
       this.cardWidth,
       this.cardHeigth,
-        this.gradient
+        this.gradient,
+        this.blendMode
       });
 
   final Color color;
@@ -16,6 +17,7 @@ class ReusableCard extends StatelessWidget {
   final double cardWidth;
   final double cardHeigth;
   final Gradient gradient;
+  final BlendMode blendMode;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class ReusableCard extends StatelessWidget {
         margin: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
           color: color,
+          backgroundBlendMode: blendMode,
           gradient: gradient,
           borderRadius: BorderRadius.circular(10.0),
         ),
