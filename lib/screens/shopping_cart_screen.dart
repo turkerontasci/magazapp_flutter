@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
+import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
@@ -12,12 +13,13 @@ class ShoppingCartScreen extends StatefulWidget {
   final String title;
   final String image;
   final double price;
+  final int qty;
   final String warning = "Sepetiniz boş";
   final double totalPriceClc;
 
 
 
-  ShoppingCartScreen({this.id, this.title, this.image, this.price, this.totalPriceClc});
+  ShoppingCartScreen({this.id, this.title, this.image, this.price, this.qty, this.totalPriceClc});
 
   @override
   _ShoppingCartScreenState createState() => _ShoppingCartScreenState();
@@ -26,28 +28,6 @@ class ShoppingCartScreen extends StatefulWidget {
 int itemCount = 1;
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
-
-  void _incrementCounter() {
-    setState(() {
-      itemCount++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (itemCount <= 1) {
-        itemCount = 1;
-      } else {
-        itemCount--;
-      }
-    });
-  }
-
-  void deleteItemToList() {
-    setState(() {
-      cartList.removeLast();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +50,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
           totalPrice = 0.0;
         } else {
         for (int i = 0; i < cartList.length; i++) {
-            totalPrice += cartList[i].price;
+            totalPrice += cartList[i].price * cartList[i].qty;
           }
         }
         return totalPrice;
       }
+
 
       return Scaffold(
         body: SingleChildScrollView(
@@ -123,7 +104,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      '${cartList[index].price * itemCount} TL',
+                                      '${cartList[index].price * cartList[index].qty} TL',
                                       style: TextStyle(
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
@@ -136,11 +117,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           fillColor: Colors.grey.shade50,
                                           icon: Icons.remove,
                                           onPressed: () {
-                                            _decrementCounter();
+                                            setState(() {
+                                              if (cartList[index].qty <= 1) {
+                                                cartList[index].qty = 1;
+                                              } else {
+                                                cartList[index].qty--;
+                                              }
+                                            });
                                           },
                                         ),
                                         Text(
-                                          '$itemCount',
+                                          '${cartList[index].qty}',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 15.0,
@@ -151,7 +138,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           fillColor: Colors.grey.shade50,
                                           icon: Icons.add,
                                           onPressed: () {
-                                            _incrementCounter();
+                                            setState(() {
+                                              cartList[index].qty++;
+                                            });
                                           },
                                         ),
                                       ],
@@ -163,7 +152,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 padding: const EdgeInsets.only(left: 80.0),
                                 child: GestureDetector(
                                   onTap: (){
-                                    deleteItemToList();
+                                    setState(() {
+                                      cartList.removeAt(index);
+                                    });
                                   },
                                   child: Icon(
                                     FontAwesomeIcons.trash,

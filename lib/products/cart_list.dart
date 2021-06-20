@@ -5,11 +5,13 @@ class CartList {
   String title;
   double price;
   String image;
+  int qty;
 
   CartList({
     this.id,
     this.title,
     this.price,
-    this.image
+    this.image,
+    this.qty,
 });
 }

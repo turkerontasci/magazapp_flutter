@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
+import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:toast/toast.dart';
 
 class ProductPage extends StatefulWidget {
@@ -12,10 +13,11 @@ class ProductPage extends StatefulWidget {
   final String title;
   final String image;
   final double price;
+  final int qty;
 
 
 
-  ProductPage({this.id, this.title, this.image, this.price});
+  ProductPage({this.id, this.title, this.image, this.price, this.qty});
 
   @override
   _ProductPageState createState() => _ProductPageState();
@@ -51,6 +53,7 @@ class _ProductPageState extends State<ProductPage> {
           title: widget.title,
           price: widget.price,
           image: widget.image,
+          qty: itemCount,
         ),
       );
     });
