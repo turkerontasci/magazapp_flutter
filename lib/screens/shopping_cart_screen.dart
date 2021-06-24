@@ -92,6 +92,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                               Container(
                                 child: Column(
                                   children: <Widget>[
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
                                     Text(
                                       cartList[index].title,
                                       style: TextStyle(
@@ -101,7 +104,16 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 5.0,
+                                      height: 2.0,
+                                    ),
+                                    Text(
+                                      "Fiyat : ${cartList[index].price} TL",
+                                      style: TextStyle(
+                                        fontSize: 13.0,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 2.0,
                                     ),
                                     Text(
                                       '${cartList[index].price * cartList[index].qty} TL',
@@ -119,7 +131,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           onPressed: () {
                                             setState(() {
                                               if (cartList[index].qty <= 1) {
-                                                cartList[index].qty = 1;
+                                                cartList.removeAt(index);
                                               } else {
                                                 cartList[index].qty--;
                                               }

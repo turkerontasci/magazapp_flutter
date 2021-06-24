@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
+import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:toast/toast.dart';
 
@@ -14,10 +15,11 @@ class ProductPage extends StatefulWidget {
   final String image;
   final double price;
   final int qty;
+  final String specs;
 
 
 
-  ProductPage({this.id, this.title, this.image, this.price, this.qty});
+  ProductPage({this.id, this.title, this.image, this.price, this.qty, this.specs});
 
   @override
   _ProductPageState createState() => _ProductPageState();
@@ -229,7 +231,52 @@ Widget _tabSection(BuildContext context) {
             Container(
               child: Padding(
                 padding: const EdgeInsets.only(left: 5.0, top: 5.0),
-                child: Text("Ürün Özellikleri :"),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Ürün Özellikleri :"),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          ReusableCard(
+                            color: Colors.grey.shade200,
+                            cardHeigth: 30.0,
+                            cardChild: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                products_specs[0]["spec"],
+                              ),
+                            ),
+                          ),
+                          ReusableCard(
+                            color: Colors.grey.shade200,
+                            cardHeigth: 30.0,
+                            cardChild: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                products_specs[1]["spec"],
+                              ),
+                            ),
+                          ),
+                          ReusableCard(
+                            color: Colors.grey.shade200,
+                            cardHeigth: 30.0,
+                            cardChild: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                products_specs[2]["spec"],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(

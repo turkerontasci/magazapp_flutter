@@ -116,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     title: products[index]["title"],
                                     price: products[index]["price"],
                                     image: products[index]["image"],
+                                    specs: products[index]["specs"],
                                   ),
                                 ),
                               );

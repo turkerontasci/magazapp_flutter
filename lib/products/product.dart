@@ -153,5 +153,17 @@ List wish_list = [
   },
 ];
 
+List products_specs = [
+  {
+    "spec": "Şarj Tipi: Type-C",
+  },
+  {
+    "spec": "Batarya: 500 mAh",
+  },
+  {
+    "spec": "Kullanım Süresi: 6 Saat",
+  },
+];
+
 
 
