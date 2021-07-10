@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: List.generate(products_row.length, (index) =>
                       Column(
-                        children: [
+                        children: <Widget>[
                           ReusableCard(
                             onPress: () {
                               Navigator.push(
@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: List.generate(products.length, (index) =>
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
+                        children: <Widget>[
                           ReusableCard(
                             onPress: () {
                               Navigator.push(
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Column(
-                            children: [
+                            children: <Widget>[
                               Text(
                                 "${products[index]["price"]} TL",
                                 style: TextStyle(
@@ -161,4 +161,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

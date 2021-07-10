@@ -6,6 +6,7 @@ import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
+import 'package:magazapp_flutter/settings_screens/payment_screen.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
 
@@ -57,6 +58,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       }
 
 
+      var icon;
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
@@ -75,6 +77,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               ReusableCard(
                                 cardHeigth: 100.0,
@@ -161,7 +164,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 80.0),
+                                padding: const EdgeInsets.only(right: 50.0),
                                 child: GestureDetector(
                                   onTap: (){
                                     setState(() {
@@ -181,27 +184,57 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15.0, bottom: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                            'Toplam : ${totalCalculator()} TL',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 5.0, bottom: 8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                                "Ödenecek Tutar :"
                             ),
-                          ),
-                        ],
-                      ),
+                            Text(
+                              '${totalCalculator()} TL',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 100.0,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            ReusableCard(
+                              onPress: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => PaymentScreen(),),);
+                              },
+                              color: Colors.blueGrey.shade200,
+                              cardHeigth: 35.0,
+                              cardWidth: 150.0,
+                              cardChild: Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Alışverişi Tamamla",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
