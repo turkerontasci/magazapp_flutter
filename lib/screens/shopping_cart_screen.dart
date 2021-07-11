@@ -233,7 +233,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       });
                                     },
                                     child: Icon(
-                                      FontAwesomeIcons.trash,
+                                      FontAwesomeIcons.solidTrashAlt,
                                     ),
                                   ),
                                 ),
