@@ -6,7 +6,6 @@ import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class WomensWear extends StatefulWidget {
-
   final int id;
   final String title;
   final String image;
@@ -29,30 +28,34 @@ class _WomensWearState extends State<WomensWear> {
             SizedBox(
               width: 60.0,
               child: Column(
-                children: List.generate(products.length, (index) => ReusableCard(
-                  color: Colors.grey.shade200,
-                  cardHeigth: 50.0,
-                  cardWidth: 50.0,
-                  cardChild: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                        image: AssetImage(products[index]["image"]),
-                        fit: BoxFit.cover,
+                children: List.generate(
+                  products.length,
+                  (index) => ReusableCard(
+                    color: Colors.grey.shade200,
+                    cardHeigth: 50.0,
+                    cardWidth: 50.0,
+                    cardChild: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                          image: AssetImage(products[index]["image"]),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                ),
                 ),
               ),
             ),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                children: List.generate(womens_wear_list.length, (index) => Container(
-                  child: Column(
-                    children: <Widget>[
-                      ReusableCard(
+                children: List.generate(
+                  womens_wear_list.length,
+                  (index) => Container(
+                    child: Column(
+                      children: <Widget>[
+                        ReusableCard(
                           color: Colors.blueGrey.shade200,
                           onPress: () {
                             Navigator.push(
@@ -73,24 +76,25 @@ class _WomensWearState extends State<WomensWear> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               image: DecorationImage(
-                                  image: AssetImage(womens_wear_list[index]["image"]),
+                                  image: AssetImage(
+                                      womens_wear_list[index]["image"]),
                                   fit: BoxFit.cover),
                             ),
                           ),
                         ),
-                      Text(
-                          "${womens_wear_list[index]["price"]} TL",
+                        Text(
+                          "${womens_wear_list[index]["price"].toStringAsFixed(2)} TL",
                           style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      Text(
+                        Text(
                           womens_wear_list[index]["title"],
                         ),
-                    ],
+                      ],
+                    ),
                   ),
-                 ),
                 ),
               ),
             ),
@@ -100,5 +104,3 @@ class _WomensWearState extends State<WomensWear> {
     );
   }
 }
-
-

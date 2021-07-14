@@ -73,7 +73,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   children: <Widget>[
                     Text("Ödenecek Tutar :"),
                     Text(
-                      '${totalCalculator()} TL',
+                      '${totalCalculator().toStringAsFixed(2)} TL',
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
@@ -180,7 +180,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                         height: 2.0,
                                       ),
                                       Text(
-                                        '${cartList[index].price * cartList[index].qty} TL',
+                                        '${(cartList[index].price * cartList[index].qty).toStringAsFixed(2)} TL',
                                         style: TextStyle(
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.bold,

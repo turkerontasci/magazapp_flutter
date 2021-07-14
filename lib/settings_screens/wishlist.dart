@@ -83,7 +83,7 @@ class _WishListState extends State<WishList> {
                                 height: 5.0,
                               ),
                               Text(
-                                '${wish_list[index]["price"]} TL',
+                                '${wish_list[index]["price"].toStringAsFixed(2)} TL',
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,

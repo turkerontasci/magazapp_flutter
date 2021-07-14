@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
@@ -25,6 +26,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
     }
 
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            "Toplam Tutar : ${totalCalculator().toStringAsFixed(2)} TL",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -82,7 +95,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       height: 2.0,
                                     ),
                                     Text(
-                                      "Fiyat : ${cartList[index].price} TL",
+                                      "Fiyat : ${cartList[index].price.toStringAsFixed(2)} TL",
                                       style: TextStyle(
                                         fontSize: 13.0,
                                       ),
@@ -91,7 +104,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       height: 2.0,
                                     ),
                                     Text(
-                                      '${cartList[index].price * cartList[index].qty} TL',
+                                      '${(cartList[index].price * cartList[index].qty).toStringAsFixed(2)} TL',
                                       style: TextStyle(
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
@@ -237,15 +250,23 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    "Toplam Tutar : ${totalCalculator()} TL",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                Row(
+                  children: <Widget>[
+                    ReusableCard(
+                      color: Colors.grey.shade300,
+                      cardHeigth: 250.0,
+                      cardWidth: 380.0,
+                      cardChild: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              //Kredi Kartı İçin TextField Yazılacak...
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),

@@ -55,46 +55,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.only(left: 5.0),
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: List.generate(products_row.length, (index) =>
-                      Column(
-                        children: <Widget>[
-                          ReusableCard(
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => ProductPage(
-                                    id: products_row[index]["id"],
-                                    title: products_row[index]["title"],
-                                    price: products_row[index]["price"],
-                                    image: products_row[index]["image"],
-                                  ),
+                  children: List.generate(
+                    products_row.length,
+                    (index) => Column(
+                      children: <Widget>[
+                        ReusableCard(
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ProductPage(
+                                  id: products_row[index]["id"],
+                                  title: products_row[index]["title"],
+                                  price: products_row[index]["price"],
+                                  image: products_row[index]["image"],
                                 ),
-                              );
-                            },
-                            cardHeigth: 120.0,
-                            cardWidth: 120.0,
-                            cardChild: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                image: DecorationImage(
-                                    image: AssetImage(products_row[index]["image"]),
-                                    fit: BoxFit.cover),
                               ),
+                            );
+                          },
+                          cardHeigth: 120.0,
+                          cardWidth: 120.0,
+                          cardChild: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage(products_row[index]["image"]),
+                                  fit: BoxFit.cover),
                             ),
                           ),
-                          Text(
-                            "${products_row[index]["price"]} TL",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        ),
+                        Text(
+                          "${products_row[index]["price"].toStringAsFixed(2)} TL",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Text(
-                            products_row[index]["title"],
-                          ),
-                        ],
-                      ),
+                        ),
+                        Text(
+                          products_row[index]["title"],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -102,55 +104,56 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.all(5.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: List.generate(products.length, (index) =>
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          ReusableCard(
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => ProductPage(
-                                    id: products[index]["id"],
-                                    title: products[index]["title"],
-                                    price: products[index]["price"],
-                                    image: products[index]["image"],
-                                    specs: products[index]["specs"],
-                                  ),
+                  children: List.generate(
+                    products.length,
+                    (index) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        ReusableCard(
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ProductPage(
+                                  id: products[index]["id"],
+                                  title: products[index]["title"],
+                                  price: products[index]["price"],
+                                  image: products[index]["image"],
+                                  specs: products[index]["specs"],
                                 ),
-                              );
-                            },
-                            cardHeigth: 150.0,
-                            cardWidth: 360.0,
-                            cardChild: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                image: DecorationImage(
-                                    image: AssetImage(products[index]["image"]),
-                                    fit: BoxFit.cover),
                               ),
+                            );
+                          },
+                          cardHeigth: 150.0,
+                          cardWidth: 360.0,
+                          cardChild: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                  image: AssetImage(products[index]["image"]),
+                                  fit: BoxFit.cover),
                             ),
                           ),
-                          Column(
-                            children: <Widget>[
-                              Text(
-                                "${products[index]["price"]} TL",
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              "${products[index]["price"].toStringAsFixed(2)} TL",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Text(
-                                products[index]["title"],
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                            Text(
+                              products[index]["title"],
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
