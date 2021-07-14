@@ -6,7 +6,7 @@ import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
-import 'package:magazapp_flutter/settings_screens/payment_screen.dart';
+import 'package:magazapp_flutter/payment_steps/payment_screen.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   final int id;
@@ -69,9 +69,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Ödenecek Tutar :"),
+                    Text(
+                        "Ödenecek Tutar :",
+                    ),
                     Text(
                       '${totalCalculator().toStringAsFixed(2)} TL',
                       style: TextStyle(
@@ -86,7 +89,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   width: 100.0,
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ReusableCard(
                       onPress: () {
@@ -99,7 +102,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                       },
                       color: Colors.pink,
                       cardHeigth: 35.0,
-                      cardWidth: 150.0,
+                      cardWidth: 125.0,
                       cardChild: Container(
                         alignment: Alignment.center,
                         child: Text(
@@ -107,7 +110,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 15.0,
+                            fontSize: 12.0,
                           ),
                         ),
                       ),

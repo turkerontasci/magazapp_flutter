@@ -90,7 +90,7 @@ class _MyOrdersState extends State<MyOrders> {
                                   height: 5.0,
                                 ),
                                 Text(
-                                  '${last_orders[index]["price"].toStringAsFixed(2) * last_orders[index]["qty"]} TL',
+                                  '${(last_orders[index]["price"] * last_orders[index]["qty"]).toStringAsFixed(2)} TL',
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,

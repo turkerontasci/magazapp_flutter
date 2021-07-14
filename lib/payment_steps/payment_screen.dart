@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -11,8 +13,18 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
+
+  String cardNumber = '';
+  String expiryDate = '';
+  String cardHolderName = '';
+  String cvvCode = '';
+  bool isCvvFocused = false;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+
     double totalCalculator() {
       double totalPrice = 0.0;
       if (cartList.isEmpty) {
@@ -29,11 +41,42 @@ class _PaymentScreenState extends State<PaymentScreen> {
       bottomNavigationBar: BottomAppBar(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Text(
-            "Toplam Tutar : ${totalCalculator().toStringAsFixed(2)} TL",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
+          child: Container(
+            height: 35.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Toplam Tutar : ${totalCalculator().toStringAsFixed(2)} TL",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                  ),
+                ),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Container(
+                    margin: const EdgeInsets.all(8),
+                    child: const Text(
+                      'Onayla',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  color: Colors.green,
+                  onPressed: () {
+                    if (formKey.currentState.validate()) {
+                      print('valid!');
+                    } else {
+                      print('invalid!');
+                    }
+                  },
+                ),
+              ],
             ),
           ),
         ),
@@ -250,23 +293,67 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                   ),
                 ),
-                Row(
-                  children: <Widget>[
-                    ReusableCard(
-                      color: Colors.grey.shade300,
-                      cardHeigth: 250.0,
-                      cardWidth: 380.0,
-                      cardChild: Column(
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              //Kredi Kartı İçin TextField Yazılacak...
-                            ],
-                          ),
-                        ],
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: <Widget>[
+                      CreditCardWidget(
+                        cardNumber: cardNumber,
+                        expiryDate: expiryDate,
+                        cardHolderName: cardHolderName,
+                        cvvCode: cvvCode,
+                        showBackView: isCvvFocused,
+                        cardBgColor: Colors.grey.shade200,
+                        obscureCardNumber: true,
+                        obscureCardCvv: true,
+                        height: 175,
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        animationDuration: Duration(milliseconds: 1000),
                       ),
-                    ),
-                  ],
+                      Container(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                CreditCardForm(
+                                  cardNumber: cardNumber,
+                                  cvvCode: cvvCode,
+                                  cardHolderName: cardHolderName,
+                                  expiryDate: expiryDate,
+                                  formKey: formKey,
+                                  themeColor: Colors.red,
+                                  obscureCvv: true,
+                                  obscureNumber: true,
+                                  cardNumberDecoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Number',
+                                    hintText: 'XXXX XXXX XXXX XXXX',
+                                  ),
+                                  expiryDateDecoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Expired Date',
+                                    hintText: 'XX/XX',
+                                  ),
+                                  cvvCodeDecoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'CVV',
+                                    hintText: 'XXX',
+                                  ),
+                                  cardHolderDecoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Card Holder',
+                                  ),
+                                  onCreditCardModelChange: onCreditCardModelChange,
+                                ),
+                              ],
+                            ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -275,4 +362,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
       ),
     );
   }
+
+  void onCreditCardModelChange(CreditCardModel creditCardModel) {
+    setState(() {
+      cardNumber = creditCardModel.cardNumber;
+      expiryDate = creditCardModel.expiryDate;
+      cardHolderName = creditCardModel.cardHolderName;
+      cvvCode = creditCardModel.cvvCode;
+      isCvvFocused = creditCardModel.isCvvFocused;
+    });
+  }
+
 }
