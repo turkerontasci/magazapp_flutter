@@ -13,18 +13,18 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-
   String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
   String cvvCode = '';
   bool isCvvFocused = false;
+  String _chosenValue;
+  int taksitSayisi;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
     double totalCalculator() {
       double totalPrice = 0.0;
       if (cartList.isEmpty) {
@@ -315,42 +315,78 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         animationDuration: Duration(milliseconds: 1000),
                       ),
                       Container(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: <Widget>[
-                                CreditCardForm(
-                                  cardNumber: cardNumber,
-                                  cvvCode: cvvCode,
-                                  cardHolderName: cardHolderName,
-                                  expiryDate: expiryDate,
-                                  formKey: formKey,
-                                  themeColor: Colors.red,
-                                  obscureCvv: true,
-                                  obscureNumber: true,
-                                  cardNumberDecoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Number',
-                                    hintText: 'XXXX XXXX XXXX XXXX',
-                                  ),
-                                  expiryDateDecoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Expired Date',
-                                    hintText: 'XX/XX',
-                                  ),
-                                  cvvCodeDecoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'CVV',
-                                    hintText: 'XXX',
-                                  ),
-                                  cardHolderDecoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Card Holder',
-                                  ),
-                                  onCreditCardModelChange: onCreditCardModelChange,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: <Widget>[
+                              CreditCardForm(
+                                cardNumber: cardNumber,
+                                cvvCode: cvvCode,
+                                cardHolderName: cardHolderName,
+                                expiryDate: expiryDate,
+                                formKey: formKey,
+                                themeColor: Colors.red,
+                                obscureCvv: true,
+                                obscureNumber: true,
+                                cardNumberDecoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Kart Numarası',
+                                  hintText: 'XXXX XXXX XXXX XXXX',
                                 ),
-                              ],
-                            ),
+                                expiryDateDecoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Son Kullanım',
+                                  hintText: 'XX/XX',
+                                ),
+                                cvvCodeDecoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'CVV',
+                                  hintText: 'XXX',
+                                ),
+                                cardHolderDecoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Ad Soyad',
+                                ),
+                                onCreditCardModelChange:
+                                    onCreditCardModelChange,
+                              ),
+                            ],
+                          ),
                         ),
+                      ),
+                      DropdownButton<String>(
+                        focusColor: Colors.white,
+                        value: _chosenValue,
+                        //elevation: 5,
+                        style: TextStyle(color: Colors.white),
+                        iconEnabledColor: Colors.black,
+                        items: <String>[
+                          'Tek Çekim',
+                          '2 Taksit',
+                          '3 Taksit',
+                          '4 Taksit',
+                          '5 Taksit',
+                          '6 Taksit',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          );
+                        }).toList(),
+                        hint: Text(
+                          "Taksit Seçiniz",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            _chosenValue = value;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -372,5 +408,4 @@ class _PaymentScreenState extends State<PaymentScreen> {
       isCvvFocused = creditCardModel.isCvvFocused;
     });
   }
-
 }
