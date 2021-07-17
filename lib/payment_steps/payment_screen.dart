@@ -4,13 +4,30 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/payment_steps/summary_page.dart';
+import 'package:magazapp_flutter/products/cart_list.dart';
+import 'package:magazapp_flutter/products/order_list.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:toast/toast.dart';
 
 class PaymentScreen extends StatefulWidget {
+
+  final int id;
+  final String title;
+  final String image;
+  final double price;
+  final int qty;
+
+  PaymentScreen({
+    this.id, this.title, this.image, this.price, this.qty
+});
+
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
 }
+
+List<OrderList> orderList = [];
 
 class _PaymentScreenState extends State<PaymentScreen> {
   String cardNumber = '';
@@ -19,12 +36,25 @@ class _PaymentScreenState extends State<PaymentScreen> {
   String cvvCode = '';
   bool isCvvFocused = false;
   String _chosenValue;
-  int taksitSayisi;
+
+  void addItemToList() {
+    setState(() {
+      orderList.add(
+        OrderList(
+          id: widget.id,
+          title: widget.title,
+          price: widget.price,
+          image: widget.image,
+        ),
+      );
+    });
+  }
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+
     double totalCalculator() {
       double totalPrice = 0.0;
       if (cartList.isEmpty) {
@@ -36,6 +66,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       }
       return totalPrice;
     }
+
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
@@ -69,11 +100,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   color: Colors.green,
                   onPressed: () {
-                    if (formKey.currentState.validate()) {
-                      print('valid!');
-                    } else {
-                      print('invalid!');
-                    }
+                    addItemToList();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SummaryPage(),
+                      ),
+                    );
                   },
                 ),
               ],
@@ -353,42 +386,46 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           ),
                         ),
                       ),
-                      DropdownButton<String>(
-                        focusColor: Colors.white,
-                        value: _chosenValue,
-                        //elevation: 5,
-                        style: TextStyle(color: Colors.white),
-                        iconEnabledColor: Colors.black,
-                        items: <String>[
-                          'Tek Çekim',
-                          '2 Taksit',
-                          '3 Taksit',
-                          '4 Taksit',
-                          '5 Taksit',
-                          '6 Taksit',
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          );
-                        }).toList(),
-                        hint: Text(
-                          "Taksit Seçiniz",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        onChanged: (String value) {
-                          setState(() {
-                            _chosenValue = value;
-                          });
-                        },
-                      ),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
+                  child: DropdownButton<String>(
+                    focusColor: Colors.white,
+                    value: _chosenValue,
+                    //elevation: 5,
+                    style: TextStyle(color: Colors.white),
+                    iconEnabledColor: Colors.black,
+                    items: <String>[
+                      'Tek Çekim, ${totalCalculator().toStringAsFixed(2)} TL',
+                      '2 Taksit, 2x ${(totalCalculator()/2).toStringAsFixed(2)} TL',
+                      '3 Taksit, 3x ${(totalCalculator()/3).toStringAsFixed(2)} TL',
+                      '4 Taksit, 4x ${(totalCalculator()/4).toStringAsFixed(2)} TL',
+                      '5 Taksit, 5x ${(totalCalculator()/5).toStringAsFixed(2)} TL',
+                      '6 Taksit, 6x ${(totalCalculator()/6).toStringAsFixed(2)} TL',
+                      '9 Taksit, 9x ${(totalCalculator()/9).toStringAsFixed(2)} TL',
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }).toList(),
+                    hint: Text(
+                      "Taksit Seçiniz",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    onChanged: (String value) {
+                      setState(() {
+                        _chosenValue = value;
+                      });
+                    },
                   ),
                 ),
               ],
