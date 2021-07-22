@@ -13,9 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SafeArea(
         child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
           child: Column(
             children: <Widget>[
               Padding(
@@ -57,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: List.generate(
                     products_row.length,
-                    (index) => Column(
+                        (index) => Column(
                       children: <Widget>[
                         ReusableCard(
                           onPress: () {
@@ -80,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(10.0),
                               image: DecorationImage(
                                   image:
-                                      AssetImage(products_row[index]["image"]),
+                                  AssetImage(products_row[index]["image"]),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -100,61 +99,70 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(5.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: List.generate(
-                    products.length,
-                    (index) => Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+              GridView.count(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.all(10.0),
+                childAspectRatio: 9.0 / 10.0,
+                crossAxisCount: 2,
+                children: List.generate(products.length, (index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ProductPage(
+                          id: products[index]["id"],
+                          title: products[index]["title"],
+                          price: products[index]["price"],
+                          image: products[index]["image"],
+                          specs: products[index]["specs"],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        ReusableCard(
-                          onPress: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => ProductPage(
-                                  id: products[index]["id"],
-                                  title: products[index]["title"],
-                                  price: products[index]["price"],
-                                  image: products[index]["image"],
-                                  specs: products[index]["specs"],
-                                ),
-                              ),
-                            );
-                          },
-                          cardHeigth: 150.0,
-                          cardWidth: 360.0,
-                          cardChild: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                  image: AssetImage(products[index]["image"]),
-                                  fit: BoxFit.cover),
-                            ),
+                        AspectRatio(
+                          aspectRatio: 18.0 / 13.0,
+                          child: Image.asset(products[index]["image"],
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Column(
-                          children: <Widget>[
-                            Text(
-                              "${products[index]["price"].toStringAsFixed(2)} TL",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "${products[index]["title"]}",
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
-                            ),
-                            Text(
-                              products[index]["title"],
-                            ),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                          ],
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                "${products[index]["price"].toStringAsFixed(2)} TL",
+                                style: TextStyle(
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
+                ),
                 ),
               ),
             ],
