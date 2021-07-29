@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
-import 'package:magazapp_flutter/products/cart_list.dart';
-import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 import 'package:magazapp_flutter/payment_steps/payment_screen.dart';
 
@@ -57,7 +55,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         return totalPrice;
       }
 
-      var icon;
       return Scaffold(
         bottomNavigationBar: Container(
           height: 60.0,
@@ -84,9 +81,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                       ),
                     ),
                   ],
-                ),
-                SizedBox(
-                  width: 100.0,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

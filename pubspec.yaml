@@ -12,10 +12,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  font_awesome_flutter: ^8.11.0
+  font_awesome_flutter: ^9.1.0
   toast: ^0.1.5
   palette_generator: ^0.3.0
   flutter_credit_card: ^2.0.0
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:

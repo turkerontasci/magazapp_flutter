@@ -4,7 +4,6 @@ import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
-import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:toast/toast.dart';
 
 class ProductPage extends StatefulWidget {
@@ -60,6 +59,75 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pink,
+        title: Text(
+          widget.title,
+        ),
+        centerTitle: true,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Fiyat: ",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    '${(widget.price * itemCount).toStringAsFixed(2)} ',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    "TL",
+                    style: TextStyle(
+                      fontSize: 13.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  addItemToList();
+                  Toast.show(
+                    "Ürün sepete eklendi",
+                    context,
+                    duration: Toast.LENGTH_SHORT,
+                    gravity: Toast.BOTTOM,
+                    backgroundColor:
+                    Colors.grey.shade300,
+                    textColor: Colors.black,
+                  );
+                },
+                child: Text(
+                  "Sepete Ekle",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -68,127 +136,69 @@ class _ProductPageState extends State<ProductPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: ReusableCard(
-                        color: Colors.grey.shade300,
-                        cardChild: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
+                          child: Container(
+                            height: 300.0,
+                            width: 300.0,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                image: AssetImage(widget.image),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ), //Image
+                        Text(
+                          widget.title,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black,
+                          ),
+                        ), //Title
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10.0),
-                                  child: Text(
-                                    widget.title,
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RoundIconButton(
+                                    fillColor: Colors.grey.shade50,
+                                    icon: Icons.remove,
+                                    onPressed: () {
+                                      _decrementCounter();
+                                    },
+                                  ),
+                                  Text(
+                                    '$itemCount',
                                     style: TextStyle(
-                                      fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 15.0,
                                       color: Colors.black,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5.0),
-                                  child: ReusableCard(
-                                    cardHeigth: 300.0,
-                                    cardWidth: 300.0,
-                                    cardChild: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        image: DecorationImage(
-                                          image: AssetImage(widget.image),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
+                                  RoundIconButton(
+                                    fillColor: Colors.grey.shade50,
+                                    icon: Icons.add,
+                                    onPressed: () {
+                                      _incrementCounter();
+                                    },
                                   ),
-                                ),
-                                Container(
-                                  alignment: Alignment.bottomRight,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 10.0, bottom: 5.0),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: <Widget>[
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            RoundIconButton(
-                                              fillColor: Colors.grey.shade50,
-                                              icon: Icons.remove,
-                                              onPressed: () {
-                                                _decrementCounter();
-                                              },
-                                            ),
-                                            Text(
-                                              '$itemCount',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15.0,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                            RoundIconButton(
-                                              fillColor: Colors.grey.shade50,
-                                              icon: Icons.add,
-                                              onPressed: () {
-                                                _incrementCounter();
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          '${(widget.price * itemCount).toStringAsFixed(2)} TL',
-                                          style: TextStyle(
-                                            fontSize: 17.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        ReusableCard(
-                                          onPress: () {
-                                            addItemToList();
-                                            Toast.show(
-                                              "Ürün sepete eklendi",
-                                              context,
-                                              duration: Toast.LENGTH_SHORT,
-                                              gravity: Toast.BOTTOM,
-                                              backgroundColor:
-                                                  Colors.grey.shade300,
-                                              textColor: Colors.black,
-                                            );
-                                          },
-                                          cardHeigth: 50.0,
-                                          cardWidth: 150.0,
-                                          color: Colors.pink,
-                                          cardChild: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Text(
-                                                "Sepete Ekle",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20.0,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),

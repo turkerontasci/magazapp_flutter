@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
-import 'package:magazapp_flutter/products/internal_categories.dart';
-import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class WomensWear extends StatefulWidget {
@@ -26,28 +23,6 @@ class _WomensWearState extends State<WomensWear> {
       body: SafeArea(
         child: Row(
           children: [
-            SizedBox(
-              width: 60.0,
-              child: Column(
-                children: List.generate(
-                  products.length,
-                  (index) => ReusableCard(
-                    color: Colors.grey.shade200,
-                    cardHeigth: 50.0,
-                    cardWidth: 50.0,
-                    cardChild: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        image: DecorationImage(
-                          image: AssetImage(products[index]["image"]),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             Expanded(
               child: GridView.count(
                 padding: EdgeInsets.all(10.0),

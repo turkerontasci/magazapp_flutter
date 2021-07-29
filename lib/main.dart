@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/screens/category_screen.dart';
 import 'package:magazapp_flutter/screens/home_screen.dart';
-import 'package:magazapp_flutter/screens/product_page.dart';
 import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:magazapp_flutter/screens/profile_screen.dart';
 
