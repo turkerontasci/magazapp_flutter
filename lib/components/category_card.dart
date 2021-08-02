@@ -1,4 +1,3 @@
-import 'package:magazapp_flutter/products/product.dart';
 import 'package:flutter/material.dart';
 
 class RoundIconButton extends StatelessWidget {
@@ -33,13 +32,13 @@ class RoundIconButton extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   CategoryCard(
-      {@required this.color,
-        @required this.assetImage,
-        @required this.categoryTitle,
-        @required this.fontSize,
-        this.onPress,
-        this.cardWidth,
-        @required this.cardHeigth});
+      {this.color,
+      @required this.assetImage,
+      @required this.categoryTitle,
+      @required this.fontSize,
+      this.onPress,
+      this.cardWidth,
+      @required this.cardHeigth});
 
   final AssetImage assetImage;
   final double fontSize;
@@ -51,49 +50,46 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: onPress,
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        width: 180.0,
+        height: 180.0,
         child: Container(
-          width: 180.0,
-          height: 180.0,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              image: DecorationImage(image: assetImage, fit: BoxFit.cover),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
-                  child: Text(
-                    "$categoryTitle",
-                    style: TextStyle(
-                      shadows: [
-                        Shadow(
-                          blurRadius: 10.0,
-                          color: Colors.black,
-                          offset: Offset(5.0, 5.0),
-                        ),
-                      ],
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            image: DecorationImage(image: assetImage, fit: BoxFit.cover),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: Text(
+                  "$categoryTitle",
+                  style: TextStyle(
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black,
+                        offset: Offset(5.0, 5.0),
+                      ),
+                    ],
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 10.0),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
+        ),
+        margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 10.0),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(10.0),
         ),
       ),
     );
   }
 }
-

@@ -21,11 +21,11 @@ class ProductPage extends StatefulWidget {
   _ProductPageState createState() => _ProductPageState();
 }
 
-int itemCount = 1;
-
 List<CartList> cartList = [];
 
 class _ProductPageState extends State<ProductPage> {
+  int itemCount = 1;
+
   void _incrementCounter() {
     setState(() {
       itemCount++;
@@ -110,8 +110,7 @@ class _ProductPageState extends State<ProductPage> {
                     context,
                     duration: Toast.LENGTH_SHORT,
                     gravity: Toast.BOTTOM,
-                    backgroundColor:
-                    Colors.grey.shade300,
+                    backgroundColor: Colors.grey.shade300,
                     textColor: Colors.black,
                   );
                 },
@@ -141,13 +140,13 @@ class _ProductPageState extends State<ProductPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
+                          padding:
+                              const EdgeInsets.only(top: 10.0, bottom: 5.0),
                           child: Container(
                             height: 300.0,
                             width: 300.0,
                             decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(10.0),
                               image: DecorationImage(
                                 image: AssetImage(widget.image),
                                 fit: BoxFit.cover,
@@ -168,8 +167,7 @@ class _ProductPageState extends State<ProductPage> {
                           children: <Widget>[
                             Container(
                               child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   RoundIconButton(
                                     fillColor: Colors.grey.shade50,
@@ -218,7 +216,7 @@ class _ProductPageState extends State<ProductPage> {
 
 Widget _tabSection(BuildContext context) {
   return DefaultTabController(
-    length: 3,
+    length: 4,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -229,9 +227,13 @@ Widget _tabSection(BuildContext context) {
               Tab(text: "Özellikler"),
               Tab(text: "Açıklama"),
               Tab(text: "Yorumlar"),
+              Tab(text: "Taksit"),
             ],
             labelColor: Colors.black,
             unselectedLabelColor: Colors.black26,
+            labelStyle: TextStyle(
+              fontSize: 13.0,
+            ),
           ),
         ),
         Container(
@@ -292,7 +294,9 @@ Widget _tabSection(BuildContext context) {
             Container(
               child: Padding(
                 padding: const EdgeInsets.only(left: 5.0, top: 5.0),
-                child: Text("Ürün Açıklaması :"),
+                child: Text(
+                  "Ürün Açıklaması :",
+                ),
               ),
             ),
             Container(
@@ -301,6 +305,12 @@ Widget _tabSection(BuildContext context) {
                 child: Text("Kullanıcı Yorumları :"),
               ),
             ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5.0, top: 5.0),
+                child: Text("Taksit Seçenekleri :"),
+              ),
+            )
           ]),
         ),
       ],
