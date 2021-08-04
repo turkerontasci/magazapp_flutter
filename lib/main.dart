@@ -57,7 +57,6 @@ class _MainPageState extends State<MainPage> {
           "Magazapp",
           style: TextStyle(
             fontSize: 24.0,
-            fontWeight: FontWeight.bold,
           ),
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
-import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
 import 'package:toast/toast.dart';
@@ -66,141 +65,193 @@ class _ProductPageState extends State<ProductPage> {
         ),
         centerTitle: true,
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Fiyat: ",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    '${(widget.price * itemCount).toStringAsFixed(2)} ',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "TL",
-                    style: TextStyle(
-                      fontSize: 13.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  addItemToList();
-                  Toast.show(
-                    "Ürün sepete eklendi",
-                    context,
-                    duration: Toast.LENGTH_SHORT,
-                    gravity: Toast.BOTTOM,
-                    backgroundColor: Colors.grey.shade300,
-                    textColor: Colors.black,
-                  );
-                },
-                child: Text(
-                  "Sepete Ekle",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(top: 10.0, bottom: 5.0),
-                          child: Container(
-                            height: 300.0,
-                            width: 300.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                image: AssetImage(widget.image),
-                                fit: BoxFit.cover,
-                              ),
+                        Container(
+                          height: 300.0,
+                          width: 300.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(
+                              image: AssetImage(widget.image),
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ), //Image
-                        Text(
-                          widget.title,
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black,
-                          ),
-                        ), //Title
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  RoundIconButton(
-                                    fillColor: Colors.grey.shade50,
-                                    icon: Icons.remove,
-                                    onPressed: () {
-                                      _decrementCounter();
-                                    },
-                                  ),
-                                  Text(
-                                    '$itemCount',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  RoundIconButton(
-                                    fillColor: Colors.grey.shade50,
-                                    icon: Icons.add,
-                                    onPressed: () {
-                                      _incrementCounter();
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "Marka",
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.pink,
+                              ),
+                            ),
+                            Text(
+                              "${widget.title}",
+                              style: TextStyle(
+                                fontSize: 23.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  '${(widget.price).toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                    fontSize: 28.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  " TL",
+                                  style: TextStyle(
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Container(
+                          height: 90.0,
+                          width: 130.0,
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        _decrementCounter();
+                                      },
+                                      child: Center(
+                                        child: Container(
+                                          height: 40.0,
+                                          width: 40.0,
+                                          decoration: BoxDecoration(
+                                            color: Colors.pink.shade400,
+                                            borderRadius: BorderRadius.circular(5.0),
+                                          ),
+                                          child: Icon(
+                                            Icons.remove,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5.0),
+                                    Container(
+                                      height: 40.0,
+                                      width: 40.0,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          width: 1.5,
+                                          color: Colors.pink.shade400,
+                                        ),
+                                        borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          '$itemCount',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15.0,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5.0),
+                                    GestureDetector(
+                                      onTap: () {
+                                        _incrementCounter();
+                                      },
+                                      child: Center(
+                                        child: Container(
+                                          height: 40.0,
+                                          width: 40.0,
+                                          decoration: BoxDecoration(
+                                            color: Colors.pink.shade400,
+                                            borderRadius: BorderRadius.circular(5.0),
+                                          ),
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 5.0),
+                                GestureDetector(
+                                  onTap: () {
+                                    addItemToList();
+                                    Toast.show(
+                                      "Ürün sepete eklendi",
+                                      context,
+                                      duration: Toast.LENGTH_SHORT,
+                                      gravity: Toast.BOTTOM,
+                                      backgroundColor: Colors.grey.shade300,
+                                      textColor: Colors.black,
+                                    );
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 40.0,
+                                    width: 130.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.pink,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: Text(
+                                      "Sepete Ekle",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+              SizedBox(height: 5.0),
               Column(
                 children: <Widget>[
                   _tabSection(context),

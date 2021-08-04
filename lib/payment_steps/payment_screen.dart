@@ -71,18 +71,29 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 10.0),
           child: Container(
-            height: 35.0,
+            height: 40.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
-                  "Toplam Tutar : ${totalCalculator().toStringAsFixed(2)} TL",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Toplam Tutar :",
+                      style: TextStyle(
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    Text(
+                        "${totalCalculator().toStringAsFixed(2)} TL",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 RaisedButton(
                   shape: RoundedRectangleBorder(

@@ -128,23 +128,28 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   child: Column(
                     children: List.generate(
                       cartList.length,
-                      (index) => ReusableCard(
-                        color: Colors.grey.shade300,
-                        cardChild: Column(
+                      (index) => Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        color: Colors.white,
+                        elevation: 5.0,
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                ReusableCard(
-                                  cardHeigth: 100.0,
-                                  cardWidth: 100.0,
-                                  cardChild: Container(
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Container(
+                                    height: 100.0,
+                                    width: 100.0,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.0),
                                       image: DecorationImage(
                                         image:
-                                            AssetImage(cartList[index].image),
+                                        AssetImage(cartList[index].image),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
