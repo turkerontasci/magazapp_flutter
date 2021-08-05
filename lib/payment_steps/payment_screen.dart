@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/payment_steps/summary_page.dart';
-import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/order_list.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:toast/toast.dart';
 
 class PaymentScreen extends StatefulWidget {
 
