@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/screens/category_screen.dart';
 import 'package:magazapp_flutter/screens/home_screen.dart';
