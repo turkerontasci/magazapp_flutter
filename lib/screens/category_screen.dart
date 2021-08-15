@@ -11,6 +11,8 @@ final double fontSize = 20.0;
 final double cardWidth = 175.0;
 final double cardHeigth = 175.0;
 
+
+
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
