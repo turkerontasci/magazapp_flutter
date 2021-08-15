@@ -12,6 +12,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
+    (products..shuffle()).first;
+    (products_row..shuffle()).first;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -70,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: List.generate(
                     products_row.length,
-                    (index) => GestureDetector(
+                      (index) => GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
@@ -85,51 +89,47 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           );
                         },
-                        child: Column(
-                          children: <Widget>[
-                            Card(
-                              clipBehavior: Clip.antiAlias,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                        child: Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        products_row[index]["image"]),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                height: 120.0,
+                                width: 120.0,
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            products_row[index]["image"]),
-                                        fit: BoxFit.cover,
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      products_row[index]["title"],
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    height: 120.0,
-                                    width: 120.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          products_row[index]["title"],
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                        Text(
-                                          "${products_row[index]["price"].toStringAsFixed(2)} TL",
-                                          style: TextStyle(
-                                            fontSize: 13.0,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ],
+                                    Text(
+                                      "${products_row[index]["price"].toStringAsFixed(2)} TL",
+                                      style: TextStyle(
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         )),
                   ),
                 ),

@@ -66,9 +66,11 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 45.0,
+        centerTitle: true,
         title: Text(
           "Magazapp",
           style: TextStyle(
+            fontWeight: FontWeight.w800,
             fontSize: 24.0,
           ),
         ),

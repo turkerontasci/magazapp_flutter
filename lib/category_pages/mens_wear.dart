@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/products/categories.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
@@ -21,6 +22,14 @@ class _MensWearState extends State<MensWear> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pink,
+        title: Text(
+            "${categories[1]["title"]}"
+        ),
+        toolbarHeight: 45.0,
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Row(
           children: [
