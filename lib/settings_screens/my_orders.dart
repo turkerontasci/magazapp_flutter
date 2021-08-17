@@ -43,7 +43,7 @@ class _MyOrdersState extends State<MyOrders> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: List.generate(
-                    last_orders.length,
+                    lastOrders.length,
                     (index) => ReusableCard(
                       color: Colors.blueGrey.shade50,
                       cardChild: Row(
@@ -54,10 +54,10 @@ class _MyOrdersState extends State<MyOrders> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) => ProductPage(
-                                    id: last_orders[index]["id"],
-                                    title: last_orders[index]["title"],
-                                    price: last_orders[index]["price"],
-                                    image: last_orders[index]["image"],
+                                    id: lastOrders[index]["id"],
+                                    title: lastOrders[index]["title"],
+                                    price: lastOrders[index]["price"],
+                                    image: lastOrders[index]["image"],
                                   ),
                                 ),
                               );
@@ -69,7 +69,7 @@ class _MyOrdersState extends State<MyOrders> {
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
                                     image:
-                                        AssetImage(last_orders[index]["image"]),
+                                        AssetImage(lastOrders[index]["image"]),
                                     fit: BoxFit.cover),
                               ),
                             ),
@@ -79,7 +79,7 @@ class _MyOrdersState extends State<MyOrders> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  last_orders[index]["title"],
+                                  lastOrders[index]["title"],
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class _MyOrdersState extends State<MyOrders> {
                                   height: 5.0,
                                 ),
                                 Text(
-                                  '${(last_orders[index]["price"] * last_orders[index]["qty"]).toStringAsFixed(2)} TL',
+                                  '${(lastOrders[index]["price"] * lastOrders[index]["qty"]).toStringAsFixed(2)} TL',
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
@@ -98,14 +98,14 @@ class _MyOrdersState extends State<MyOrders> {
                                   ),
                                 ),
                                 Text(
-                                  "Adet :  ${last_orders[index]["qty"]}",
+                                  "Adet :  ${lastOrders[index]["qty"]}",
                                 ),
                                 SizedBox(
                                   height: 5.0,
                                 ),
                                 Text(
                                   "Sipariş Tarihi : " +
-                                      last_orders[index]["date"],
+                                      lastOrders[index]["date"],
                                 ),
                               ],
                             ),

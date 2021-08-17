@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
+import 'package:magazapp_flutter/components/user_info.dart';
 import 'package:magazapp_flutter/payment_steps/summary_page.dart';
 import 'package:magazapp_flutter/products/order_list.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
@@ -256,7 +257,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                             color: Colors.black,
                                           ),
                                         ),
-                                        Text("Adres Bilgisi 1..."),
+                                        SizedBox(
+                                          height: 3.0,
+                                        ),
+                                        Text(
+                                          "${userInfo[0]["address"][0]}",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            letterSpacing: 0.9,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 3.0,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -280,9 +293,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
+                                      CrossAxisAlignment.stretch,
                                       children: [
                                         Text(
                                           "Kayıtlı Adres:",
@@ -292,7 +305,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                             color: Colors.black,
                                           ),
                                         ),
-                                        Text("Adres Bilgisi 2..."),
+                                        SizedBox(
+                                          height: 3.0,
+                                        ),
+                                        Text(
+                                          "${userInfo[0]["address"][1]}",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            letterSpacing: 0.9,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -309,6 +331,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 height: 150.0,
                                 width: 150.0,
                                 child: IconButton(
+                                  onPressed: () {
+                                    //TODO onPressed eklenecek
+                                  },
                                   icon: Icon(
                                     Icons.add,
                                     size: 70.0,

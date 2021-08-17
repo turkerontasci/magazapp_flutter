@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 List products = [
   {
     "id": 1,
@@ -57,7 +55,7 @@ List products = [
   },
 ];
 
-List products_row = [
+List productsRow = [
   {
     "id": 1,
     "title": "Nikon D800",
@@ -90,7 +88,7 @@ List products_row = [
   },
 ];
 
-List last_list = [
+List lastList = [
   {
     "id": 1,
     "title": "Nikon D800",
@@ -111,7 +109,7 @@ List last_list = [
   },
 ];
 
-List last_orders = [
+List lastOrders = [
   {
     "id": 1,
     "title": "Nikon D800",
@@ -138,7 +136,7 @@ List last_orders = [
   },
 ];
 
-List wish_list = [
+List wishList = [
   {
     "id": 1,
     "title": "WD Black 3TB SSD",
@@ -153,7 +151,7 @@ List wish_list = [
   },
 ];
 
-List products_specs = [
+List productsSpecs = [
   {
     "spec": "Şarj Tipi: Type-C",
   },

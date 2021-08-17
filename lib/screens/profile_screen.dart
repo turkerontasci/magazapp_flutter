@@ -6,6 +6,7 @@ import 'package:magazapp_flutter/settings_screens/my_orders.dart';
 import 'package:magazapp_flutter/settings_screens/order_track.dart';
 import 'package:magazapp_flutter/settings_screens/returns.dart';
 import 'package:magazapp_flutter/settings_screens/settings_page.dart';
+import 'package:magazapp_flutter/settings_screens/user_profile.dart';
 import 'package:magazapp_flutter/settings_screens/wishlist.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -39,17 +40,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: List.generate(last_list.length, (index) =>
+                  children: List.generate(lastList.length, (index) =>
                       ReusableCard(
                         onPress: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (_) => ProductPage(
-                                id: last_list[index]["id"],
-                                title: last_list[index]["title"],
-                                price: last_list[index]["price"],
-                                image: last_list[index]["image"],
+                                id: lastList[index]["id"],
+                                title: lastList[index]["title"],
+                                price: lastList[index]["price"],
+                                image: lastList[index]["image"],
                               ),
                             ),
                           );
@@ -60,11 +61,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
-                                image: AssetImage(last_list[index]["image"]),
+                                image: AssetImage(lastList[index]["image"]),
                                 fit: BoxFit.cover),
                           ),
                         ),
                       ),
+                  ),
+                ),
+              ),
+              ReusableCard(
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => UserProfile(),),);
+                },
+                color: Colors.blueGrey.shade100,
+                cardHeigth: 50.0,
+                cardWidth: 250.0,
+                cardChild: Center(
+                  child: Text(
+                    "Hesabım",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
     (products..shuffle()).first;
-    (products_row..shuffle()).first;
+    (productsRow..shuffle()).first;
 
     return Scaffold(
       body: SafeArea(
@@ -23,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               CarouselSlider(
                 options: CarouselOptions(
-                  height: 200,
-                  aspectRatio: 2.0,
+                  height: 275,
+                  aspectRatio: 18 / 9,
                   viewportFraction: 0.85, //sıkılırsan 0.95 yap...
                   initialPage: 0,
                   enableInfiniteScroll: true,
@@ -37,17 +37,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                 ),
                 items: List.generate(
-                  last_list.length,
+                  lastList.length,
                   (index) => GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (_) => ProductPage(
-                            id: last_list[index]["id"],
-                            title: last_list[index]["title"],
-                            price: last_list[index]["price"],
-                            image: last_list[index]["image"],
+                            id: lastList[index]["id"],
+                            title: lastList[index]["title"],
+                            price: lastList[index]["price"],
+                            image: lastList[index]["image"],
                           ),
                         ),
                       );
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
-                            image: AssetImage(last_list[index]["image"]),
+                            image: AssetImage(lastList[index]["image"]),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -73,18 +73,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                    products_row.length,
+                    productsRow.length,
                       (index) => GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (_) => ProductPage(
-                                id: products_row[index]["id"],
-                                title: products_row[index]["title"],
-                                price: products_row[index]["price"],
-                                image: products_row[index]["image"],
-                                qty: products_row[index]["qty"],
+                                id: productsRow[index]["id"],
+                                title: productsRow[index]["title"],
+                                price: productsRow[index]["price"],
+                                image: productsRow[index]["image"],
+                                qty: productsRow[index]["qty"],
                               ),
                             ),
                           );
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage(
-                                        products_row[index]["image"]),
+                                        productsRow[index]["image"]),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -112,14 +112,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      products_row[index]["title"],
+                                      productsRow[index]["title"],
                                       style: TextStyle(
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                     Text(
-                                      "${products_row[index]["price"].toStringAsFixed(2)} TL",
+                                      "${productsRow[index]["price"].toStringAsFixed(2)} TL",
                                       style: TextStyle(
                                         fontSize: 13.0,
                                         fontWeight: FontWeight.w700,

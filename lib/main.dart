@@ -102,6 +102,8 @@ class _MainPageState extends State<MainPage> {
                 (cartList.length).toString(),
                 style: TextStyle(color: Colors.white),
               ),
+              animationType: BadgeAnimationType.slide,
+              animationDuration: Duration(milliseconds: 10),
               badgeColor: Colors.pink,
               showBadge: _checkList(),
             ),

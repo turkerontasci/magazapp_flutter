@@ -80,7 +80,6 @@ class _ProductPageState extends State<ProductPage> {
                       children: <Widget>[
                         Container(
                           height: 300.0,
-                          width: 300.0,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
@@ -311,7 +310,7 @@ Widget _tabSection(BuildContext context) {
                             cardChild: Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                products_specs[0]["spec"],
+                                productsSpecs[0]["spec"],
                               ),
                             ),
                           ),
@@ -321,7 +320,7 @@ Widget _tabSection(BuildContext context) {
                             cardChild: Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                products_specs[1]["spec"],
+                                productsSpecs[1]["spec"],
                               ),
                             ),
                           ),
@@ -331,7 +330,7 @@ Widget _tabSection(BuildContext context) {
                             cardChild: Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                products_specs[2]["spec"],
+                                productsSpecs[2]["spec"],
                               ),
                             ),
                           ),

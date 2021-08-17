@@ -37,7 +37,7 @@ class _WishListState extends State<WishList> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
-                  wish_list.length,
+                  wishList.length,
                   (index) => ReusableCard(
                     color: Colors.blueGrey.shade50,
                     cardChild: Row(
@@ -48,10 +48,10 @@ class _WishListState extends State<WishList> {
                               context,
                               MaterialPageRoute(
                                 builder: (_) => ProductPage(
-                                  id: wish_list[index]["id"],
-                                  title: wish_list[index]["title"],
-                                  price: wish_list[index]["price"],
-                                  image: wish_list[index]["image"],
+                                  id: wishList[index]["id"],
+                                  title: wishList[index]["title"],
+                                  price: wishList[index]["price"],
+                                  image: wishList[index]["image"],
                                 ),
                               ),
                             );
@@ -62,7 +62,7 @@ class _WishListState extends State<WishList> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               image: DecorationImage(
-                                  image: AssetImage(wish_list[index]["image"]),
+                                  image: AssetImage(wishList[index]["image"]),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -72,7 +72,7 @@ class _WishListState extends State<WishList> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                wish_list[index]["title"],
+                                wishList[index]["title"],
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class _WishListState extends State<WishList> {
                                 height: 5.0,
                               ),
                               Text(
-                                '${wish_list[index]["price"].toStringAsFixed(2)} TL',
+                                '${wishList[index]["price"].toStringAsFixed(2)} TL',
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
