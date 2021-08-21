@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
-import 'package:magazapp_flutter/products/category_product.dart';
-import 'package:magazapp_flutter/products/product.dart';
-import 'package:magazapp_flutter/screens/product_page.dart';
 
 class Electronics extends StatefulWidget {
 

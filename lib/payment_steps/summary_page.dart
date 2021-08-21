@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/payment_steps/payment_screen.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';

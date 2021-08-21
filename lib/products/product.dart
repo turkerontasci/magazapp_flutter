@@ -93,19 +93,19 @@ List lastList = [
     "id": 1,
     "title": "Nikon D800",
     "price": 5000.0,
-    "image": "images/category_images/nikon.jpeg",
+    "image": "images/indirim_1.jpeg",
   },
   {
     "id": 2,
     "title": "Nike Ayakkabı",
     "price": 300.0,
-    "image": "images/category_images/nike.jpeg",
+    "image": "images/indirim_2.jpg",
   },
   {
     "id": 3,
     "title": "Kulaklık",
     "price": 300.0,
-    "image": "images/category_images/kulaklık.jpeg",
+    "image": "images/indirim_3.jpg",
   },
 ];
 

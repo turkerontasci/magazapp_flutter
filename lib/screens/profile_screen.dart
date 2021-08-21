@@ -40,17 +40,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: List.generate(lastList.length, (index) =>
+                  children: List.generate(lastOrders.length, (index) =>
                       ReusableCard(
                         onPress: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (_) => ProductPage(
-                                id: lastList[index]["id"],
-                                title: lastList[index]["title"],
-                                price: lastList[index]["price"],
-                                image: lastList[index]["image"],
+                                id: lastOrders[index]["id"],
+                                title: lastOrders[index]["title"],
+                                price: lastOrders[index]["price"],
+                                image: lastOrders[index]["image"],
                               ),
                             ),
                           );
@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
-                                image: AssetImage(lastList[index]["image"]),
+                                image: AssetImage(lastOrders[index]["image"]),
                                 fit: BoxFit.cover),
                           ),
                         ),

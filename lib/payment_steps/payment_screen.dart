@@ -63,6 +63,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
       return totalPrice;
     }
 
+    Color _selectedColor = Colors.grey.shade200;
+    Color _selectedText = Colors.black;
+
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
@@ -230,14 +233,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: Colors.grey.shade200,
-                                ),
-                                height: 150.0,
-                                width: 150.0,
-                                child: GestureDetector(
+                              child: GestureDetector(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: _selectedColor,
+                                  ),
+                                  height: 150.0,
+                                  width: 150.0,
                                   child: Padding(
                                     padding: const EdgeInsets.only(
                                       top: 5.0,
@@ -254,7 +257,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                           style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.black,
+                                            color: _selectedText,
                                           ),
                                         ),
                                         SizedBox(
@@ -263,7 +266,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         Text(
                                           "${userInfo[0]["address"][0]}",
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: _selectedText,
                                             letterSpacing: 0.9,
                                           ),
                                         ),
