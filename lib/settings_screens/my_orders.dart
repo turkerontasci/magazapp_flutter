@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
-import 'package:magazapp_flutter/products/product.dart';
-import 'package:magazapp_flutter/screens/product_page.dart';
 
 class MyOrders extends StatefulWidget {
   final int id;
@@ -20,102 +17,21 @@ class _MyOrdersState extends State<MyOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Siparişlerim",
+        ),
+        backgroundColor: Colors.pink,
+        toolbarHeight: 45.0,
+        centerTitle: true,
+      ),
       body: SafeArea(
-        child: Container(
-          constraints: BoxConstraints(
-            maxWidth: double.infinity,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: Text(
-                    "Son Siparişleriniz :",
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(
-                    lastOrders.length,
-                    (index) => ReusableCard(
-                      color: Colors.blueGrey.shade50,
-                      cardChild: Row(
-                        children: <Widget>[
-                          ReusableCard(
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => ProductPage(
-                                    id: lastOrders[index]["id"],
-                                    title: lastOrders[index]["title"],
-                                    price: lastOrders[index]["price"],
-                                    image: lastOrders[index]["image"],
-                                  ),
-                                ),
-                              );
-                            },
-                            cardHeigth: 100.0,
-                            cardWidth: 100.0,
-                            cardChild: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage(lastOrders[index]["image"]),
-                                    fit: BoxFit.cover),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  lastOrders[index]["title"],
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Text(
-                                  '${(lastOrders[index]["price"] * lastOrders[index]["qty"]).toStringAsFixed(2)} TL',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Text(
-                                  "Adet :  ${lastOrders[index]["qty"]}",
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Text(
-                                  "Sipariş Tarihi : " +
-                                      lastOrders[index]["date"],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+        child: Center(
+          child: Text(
+            "Siparişiniz Yok",
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

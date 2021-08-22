@@ -89,7 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               ReusableCard(
                 onPress: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => MyOrders(),),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MyOrders(),
+                    ),
+                  );
                 },
                 color: Colors.blueGrey.shade100,
                 cardHeigth: 50.0,

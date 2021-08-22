@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/reusable_card.dart';
-import 'package:magazapp_flutter/payment_steps/payment_screen.dart';
+import 'package:magazapp_flutter/main.dart';
+import 'package:magazapp_flutter/screens/home_screen.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class SummaryPage extends StatefulWidget {
@@ -20,8 +21,6 @@ class SummaryPage extends StatefulWidget {
 class _SummaryPageState extends State<SummaryPage> {
   @override
   Widget build(BuildContext context) {
-    print("asdasd ${orderList[0].title}");
-
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -107,7 +106,39 @@ class _SummaryPageState extends State<SummaryPage> {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (_) => MainPage(),
+                  ),
+                  );
+                },
+                child: Container(
+                  height: 40.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.pink,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Devam Et",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

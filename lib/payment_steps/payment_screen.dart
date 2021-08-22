@@ -33,18 +33,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool isCvvFocused = false;
   String _chosenValue;
 
-  void addItemToList() {
-    setState(() {
-      orderList.add(
-        OrderList(
-          id: widget.id,
-          title: widget.title,
-          price: widget.price,
-          image: widget.image,
-        ),
-      );
-    });
-  }
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -110,7 +98,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   color: Colors.green,
                   onPressed: () {
-                    addItemToList();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
