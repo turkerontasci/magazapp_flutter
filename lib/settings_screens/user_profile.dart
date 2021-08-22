@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/components/user_info.dart';
 
 class UserProfile extends StatefulWidget {
-
   @override
   _UserProfileState createState() => _UserProfileState();
 }
@@ -11,6 +10,13 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Hesabım",
+        ),
+        centerTitle: true,
+        toolbarHeight: 45.0,
+      ),
       body: SafeArea(
         child: Container(
           child: Column(
@@ -24,7 +30,8 @@ class _UserProfileState extends State<UserProfile> {
                         height: 10.0,
                       ),
                       CircleAvatar(
-                        backgroundImage: AssetImage(userInfo[0]["profileImage"]),
+                        backgroundImage:
+                            AssetImage(userInfo[0]["profileImage"]),
                         radius: 50.0,
                       ),
                       SizedBox(

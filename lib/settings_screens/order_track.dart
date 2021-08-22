@@ -10,6 +10,13 @@ class _OrderTrackState extends State<OrderTrack> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Kargolarım",
+        ),
+        toolbarHeight: 45.0,
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Center(
           child: Text(

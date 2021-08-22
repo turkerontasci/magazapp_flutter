@@ -162,3 +162,66 @@ List productsSpecs = [
     "spec": "Kullanım Süresi: 6 Saat",
   },
 ];
+
+List dummy_item = [
+  {
+    "id": 1,
+    "title": "Sırt Çantası",
+    "price": 299.00,
+    "image": [
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"}
+    ],
+    "specs": [
+      {"spec": "kumaş"},
+      {"spec": "kumaş"},
+      {"spec": "kumaş"}
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Sırt Çantası",
+    "price": 299.00,
+    "image": [
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"}
+    ],
+    "specs": [
+      {"spec": "kumaş"},
+      {"spec": "kumaş"},
+      {"spec": "kumaş"}
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Sırt Çantası",
+    "price": 299.00,
+    "image": [
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"}
+    ],
+    "specs": [
+      {"spec": "kumaş"},
+      {"spec": "kumaş"},
+      {"spec": "kumaş"}
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Sırt Çantası",
+    "price": 299.00,
+    "image": [
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"},
+      {"res": "images/category_images/canta"}
+    ],
+    "specs": [
+      {"spec": "kumaş"},
+      {"spec": "kumaş"},
+      {"spec": "kumaş"}
+    ]
+  }
+];
