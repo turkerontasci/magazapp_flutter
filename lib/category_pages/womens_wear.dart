@@ -4,14 +4,6 @@ import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class WomensWear extends StatefulWidget {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final int qty;
-
-  WomensWear({this.id, this.title, this.image, this.price, this.qty});
-
   @override
   _WomensWearState createState() => _WomensWearState();
 }
@@ -22,9 +14,7 @@ class _WomensWearState extends State<WomensWear> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Text(
-          "${categories[0]["title"]}"
-        ),
+        title: Text("${categories[0]["title"]}"),
         toolbarHeight: 45.0,
         centerTitle: true,
       ),
@@ -48,7 +38,6 @@ class _WomensWearState extends State<WomensWear> {
                         title: womens_wear_list[index]["title"],
                         price: womens_wear_list[index]["price"],
                         image: womens_wear_list[index]["image"],
-                        specs: womens_wear_list[index]["specs"],
                       ),
                     ),
                   );

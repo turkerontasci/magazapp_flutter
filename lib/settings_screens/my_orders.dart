@@ -7,7 +7,12 @@ class MyOrders extends StatefulWidget {
   final double price;
   final int qty;
 
-  MyOrders({this.id, this.title, this.image, this.price, this.qty});
+  MyOrders(
+      {required this.id,
+      required this.title,
+      required this.image,
+      required this.price,
+      required this.qty});
 
   @override
   _MyOrdersState createState() => _MyOrdersState();

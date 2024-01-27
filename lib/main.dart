@@ -1,10 +1,10 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/screens/category_screen.dart';
 import 'package:magazapp_flutter/screens/home_screen.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 import 'package:magazapp_flutter/screens/shopping_cart_screen.dart';
 import 'package:magazapp_flutter/screens/profile_screen.dart';
+import 'package:badges/badges.dart' as badges;
 
 void main() {
   runApp(MyApp());
@@ -14,8 +14,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-
     return MaterialApp(
       title: 'Magazapp',
       debugShowCheckedModeBanner: false,
@@ -23,16 +21,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         backgroundColor: Colors.white,
       ),
-      home: MainPage(),
+      home: MainPage(
+        title: 'Magazapp',
+      ),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
+  MainPage({super.key, required this.title});
 
   final String title;
-
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -46,6 +45,10 @@ class _MainPageState extends State<MainPage> {
     ShoppingCartScreen(),
     ProfileScreen()
   ];
+
+  int _cartBadgeAmount = cartList.length;
+
+  late bool _showCartBadge;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -65,6 +68,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.pink,
         toolbarHeight: 45.0,
         centerTitle: true,
         title: Text(
@@ -72,6 +76,7 @@ class _MainPageState extends State<MainPage> {
           style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 24.0,
+            color: Colors.white,
           ),
         ),
       ),
@@ -94,18 +99,26 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Badge(
-              child: Icon(Icons.shopping_cart),
-              position: BadgePosition.topEnd(top: -10, end: -10),
-              ignorePointer: false,
-              badgeContent: Text(
-                (cartList.length).toString(),
-                style: TextStyle(color: Colors.white),
+            icon: badges.Badge(
+              badgeAnimation: badges.BadgeAnimation.slide(
+                disappearanceFadeAnimationDuration: Duration(milliseconds: 200),
+                curve: Curves.easeInCubic,
               ),
-              animationType: BadgeAnimationType.slide,
-              animationDuration: Duration(milliseconds: 10),
-              badgeColor: Colors.pink,
+              position: badges.BadgePosition.bottomEnd(
+                bottom: 6,
+                end: -6,
+              ),
               showBadge: _checkList(),
+              badgeStyle: badges.BadgeStyle(
+                badgeColor: Colors.pink,
+              ),
+              badgeContent: Text(
+                "${(cartList.length).toString()}",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              child: Icon(Icons.shopping_cart),
             ),
             label: 'Sepet',
             backgroundColor: Colors.white,

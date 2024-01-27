@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/products/categories.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
@@ -14,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     var newList = products + womens_wear_list + mens_wear_list;
 
     (newList..shuffle()).first;
@@ -76,40 +74,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.only(left: 13.0),
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: List.generate(categories.length, (index) => Padding(
-                    padding: const EdgeInsets.only(right: 10.0, bottom: 5.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => categories[index]["category_route"],
-                          ),
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.pink,
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        height: 50.0,
-                        width: 100.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "${categories[index]["title"]}",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16.0,
-                              ),
+                  children: List.generate(
+                    categories.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.only(right: 10.0, bottom: 5.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  categories[index]["category_route"],
                             ),
-                          ],
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.pink,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          height: 50.0,
+                          width: 100.0,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "${categories[index]["title"]}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),),
+                  ),
                 ),
               ),
               SingleChildScrollView(
@@ -118,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: List.generate(
                     productsRow.length,
-                      (index) => GestureDetector(
+                    (index) => GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
@@ -128,7 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 title: productsRow[index]["title"],
                                 price: productsRow[index]["price"],
                                 image: productsRow[index]["image"],
-                                qty: productsRow[index]["qty"],
                               ),
                             ),
                           );
@@ -143,8 +144,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage(
-                                        productsRow[index]["image"]),
+                                    image:
+                                        AssetImage(productsRow[index]["image"]),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -196,8 +197,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             title: newList[index]["title"],
                             price: newList[index]["price"],
                             image: newList[index]["image"],
-                            specs: newList[index]["specs"],
-                            qty: newList[index]["qty"],
                           ),
                         ),
                       );

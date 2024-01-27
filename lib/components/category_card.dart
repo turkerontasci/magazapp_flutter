@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton(
-      {@required this.icon,
-      @required this.onPressed,
-      @required this.fillColor,
-      this.height,
-      this.width});
+  RoundIconButton({
+    required this.icon,
+    required this.onPressed,
+    required this.fillColor,
+    required this.height,
+    required this.width,
+  });
 
   final IconData icon;
   final Function onPressed;
@@ -18,7 +19,7 @@ class RoundIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
       child: Icon(icon),
-      onPressed: onPressed,
+      onPressed: onPressed(),
       elevation: 6.0,
       constraints: BoxConstraints.tightFor(
         width: width,
@@ -31,27 +32,26 @@ class RoundIconButton extends StatelessWidget {
 }
 
 class CategoryCard extends StatelessWidget {
-  CategoryCard(
-      {this.color,
-      @required this.assetImage,
-      @required this.categoryTitle,
-      @required this.fontSize,
-      this.onPress,
-      this.cardWidth,
-      @required this.cardHeigth});
+  CategoryCard({
+    required this.color,
+    required this.assetImage,
+    required this.categoryTitle,
+    required this.fontSize,
+    required this.cardWidth,
+    required this.cardHeigth,
+  });
 
   final AssetImage assetImage;
   final double fontSize;
   final String categoryTitle;
   final Color color;
-  final Function onPress;
   final double cardWidth;
   final double cardHeigth;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPress,
+      onTap: null,
       child: Container(
         width: 180.0,
         height: 180.0,

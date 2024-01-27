@@ -1,20 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/products/cart_list.dart';
 import 'package:magazapp_flutter/products/product.dart';
-import 'package:toast/toast.dart';
 
 class ProductPage extends StatefulWidget {
   final int id;
   final String title;
   final String image;
   final double price;
-  final int qty;
-  final String specs;
 
-  ProductPage(
-      {this.id, this.title, this.image, this.price, this.qty, this.specs});
+  ProductPage({
+    required this.id,
+    required this.title,
+    required this.image,
+    required this.price,
+  });
 
   @override
   _ProductPageState createState() => _ProductPageState();
@@ -157,7 +156,8 @@ class _ProductPageState extends State<ProductPage> {
                                           width: 40.0,
                                           decoration: BoxDecoration(
                                             color: Colors.pink.shade400,
-                                            borderRadius: BorderRadius.circular(5.0),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           ),
                                           child: Icon(
                                             Icons.remove,
@@ -175,7 +175,8 @@ class _ProductPageState extends State<ProductPage> {
                                           width: 1.5,
                                           color: Colors.pink.shade400,
                                         ),
-                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -199,7 +200,8 @@ class _ProductPageState extends State<ProductPage> {
                                           width: 40.0,
                                           decoration: BoxDecoration(
                                             color: Colors.pink.shade400,
-                                            borderRadius: BorderRadius.circular(5.0),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           ),
                                           child: Icon(
                                             Icons.add,
@@ -214,14 +216,6 @@ class _ProductPageState extends State<ProductPage> {
                                 GestureDetector(
                                   onTap: () {
                                     addItemToList();
-                                    Toast.show(
-                                      "Ürün sepete eklendi",
-                                      context,
-                                      duration: Toast.LENGTH_SHORT,
-                                      gravity: Toast.BOTTOM,
-                                      backgroundColor: Colors.grey.shade300,
-                                      textColor: Colors.black,
-                                    );
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -304,30 +298,30 @@ Widget _tabSection(BuildContext context) {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          ReusableCard(
+                          Container(
                             color: Colors.grey.shade200,
-                            cardHeigth: 30.0,
-                            cardChild: Container(
+                            height: 30.0,
+                            child: Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 productsSpecs[0]["spec"],
                               ),
                             ),
                           ),
-                          ReusableCard(
+                          Container(
                             color: Colors.grey.shade200,
-                            cardHeigth: 30.0,
-                            cardChild: Container(
+                            height: 30.0,
+                            child: Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 productsSpecs[1]["spec"],
                               ),
                             ),
                           ),
-                          ReusableCard(
+                          Container(
                             color: Colors.grey.shade200,
-                            cardHeigth: 30.0,
-                            cardChild: Container(
+                            height: 30.0,
+                            child: Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 productsSpecs[2]["spec"],

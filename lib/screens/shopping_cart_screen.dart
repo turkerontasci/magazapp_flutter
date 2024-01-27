@@ -1,28 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
-import 'package:magazapp_flutter/components/category_card.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
-import 'package:magazapp_flutter/payment_steps/payment_screen.dart';
 
+// ignore: must_be_immutable
 class ShoppingCartScreen extends StatefulWidget {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final int qty;
-  final String warning = "Sepetiniz boş";
-  final double totalPriceClc;
-
-  ShoppingCartScreen(
-      {this.id,
-      this.title,
-      this.image,
-      this.price,
-      this.qty,
-      this.totalPriceClc});
-
   @override
   _ShoppingCartScreenState createState() => _ShoppingCartScreenState();
 }
@@ -70,7 +51,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                        "Ödenecek Tutar :",
+                      "Ödenecek Tutar :",
                     ),
                     Text(
                       '${totalCalculator().toStringAsFixed(2)} TL',
@@ -85,19 +66,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ReusableCard(
-                      onPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => PaymentScreen(),
-                          ),
-                        );
-                      },
+                    Container(
                       color: Colors.pink,
-                      cardHeigth: 35.0,
-                      cardWidth: 125.0,
-                      cardChild: Container(
+                      height: 35.0,
+                      width: 125.0,
+                      child: Container(
                         alignment: Alignment.center,
                         child: Text(
                           "Alışverişi Tamamla",
@@ -149,7 +122,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       borderRadius: BorderRadius.circular(10.0),
                                       image: DecorationImage(
                                         image:
-                                        AssetImage(cartList[index].image),
+                                            AssetImage(cartList[index].image),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -191,10 +164,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       ),
                                       Row(
                                         children: <Widget>[
-                                          RoundIconButton(
-                                            fillColor: Colors.grey.shade50,
-                                            icon: Icons.remove,
-                                            onPressed: () {
+                                          GestureDetector(
+                                            onTap: () {
                                               setState(() {
                                                 if (cartList[index].qty <= 1) {
                                                   cartList.removeAt(index);
@@ -203,6 +174,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                 }
                                               });
                                             },
+                                            child: Container(
+                                              color: Colors.grey.shade50,
+                                              child: Icon(
+                                                Icons.remove,
+                                              ),
+                                            ),
                                           ),
                                           Text(
                                             '${cartList[index].qty}',
@@ -212,14 +189,22 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          RoundIconButton(
-                                            fillColor: Colors.grey.shade50,
-                                            icon: Icons.add,
-                                            onPressed: () {
+                                          GestureDetector(
+                                            onTap: () {
                                               setState(() {
-                                                cartList[index].qty++;
+                                                if (cartList[index].qty <= 1) {
+                                                  cartList.removeAt(index);
+                                                } else {
+                                                  cartList[index].qty++;
+                                                }
                                               });
                                             },
+                                            child: Container(
+                                              color: Colors.grey.shade50,
+                                              child: Icon(
+                                                Icons.add,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),

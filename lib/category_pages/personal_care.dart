@@ -4,14 +4,6 @@ import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class PersonalCare extends StatefulWidget {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final int qty;
-
-  PersonalCare({this.id, this.title, this.image, this.price, this.qty});
-
   @override
   _PersonalCareState createState() => _PersonalCareState();
 }
@@ -22,9 +14,7 @@ class _PersonalCareState extends State<PersonalCare> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Text(
-            "${categories[5]["title"]}"
-        ),
+        title: Text("${categories[5]["title"]}"),
         toolbarHeight: 45.0,
         centerTitle: true,
       ),
@@ -38,7 +28,7 @@ class _PersonalCareState extends State<PersonalCare> {
             crossAxisCount: 2,
             children: List.generate(
               womens_wear_list.length,
-                  (index) => GestureDetector(
+              (index) => GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -48,7 +38,6 @@ class _PersonalCareState extends State<PersonalCare> {
                         title: womens_wear_list[index]["title"],
                         price: womens_wear_list[index]["price"],
                         image: womens_wear_list[index]["image"],
-                        specs: womens_wear_list[index]["specs"],
                       ),
                     ),
                   );

@@ -4,14 +4,6 @@ import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class Electronics extends StatefulWidget {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final int qty;
-
-  Electronics({this.id, this.title, this.image, this.price, this.qty});
-
   @override
   _ElectronicsState createState() => _ElectronicsState();
 }
@@ -22,9 +14,7 @@ class _ElectronicsState extends State<Electronics> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Text(
-          "${categories[3]["title"]}"
-        ),
+        title: Text("${categories[3]["title"]}"),
         toolbarHeight: 45.0,
         centerTitle: true,
       ),
@@ -39,18 +29,18 @@ class _ElectronicsState extends State<Electronics> {
             children: List.generate(
               womens_wear_list.length,
               (index) => GestureDetector(
-                 onTap: () {
-                   Navigator.push(
-                     context, MaterialPageRoute(
-                     builder: (_) => ProductPage(
-                       id: womens_wear_list[index]["id"],
-                       title: womens_wear_list[index]["title"],
-                       price: womens_wear_list[index]["price"],
-                       image: womens_wear_list[index]["image"],
-                       specs: womens_wear_list[index]["specs"],
-                     ),
-                   ),
-                 );
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ProductPage(
+                        id: womens_wear_list[index]["id"],
+                        title: womens_wear_list[index]["title"],
+                        price: womens_wear_list[index]["price"],
+                        image: womens_wear_list[index]["image"],
+                      ),
+                    ),
+                  );
                 },
                 child: Card(
                   clipBehavior: Clip.antiAlias,
@@ -60,7 +50,8 @@ class _ElectronicsState extends State<Electronics> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      AspectRatio(aspectRatio: 18.0 / 13.0,
+                      AspectRatio(
+                        aspectRatio: 18.0 / 13.0,
                         child: Image.asset(
                           womens_wear_list[index]["image"],
                           fit: BoxFit.cover,

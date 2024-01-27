@@ -1,19 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/products/categories.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
-import 'package:magazapp_flutter/products/product.dart';
 
 class Accessories extends StatefulWidget {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final int qty;
-
-  Accessories({this.id, this.title, this.image, this.price, this.qty});
-
   @override
   _AccessoriesState createState() => _AccessoriesState();
 }
@@ -24,9 +14,7 @@ class _AccessoriesState extends State<Accessories> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Text(
-          "${categories[2]["title"]}"
-        ),
+        title: Text("${categories[2]["title"]}"),
         toolbarHeight: 45.0,
         centerTitle: true,
       ),
@@ -40,7 +28,7 @@ class _AccessoriesState extends State<Accessories> {
             crossAxisCount: 2,
             children: List.generate(
               womens_wear_list.length,
-                  (index) => GestureDetector(
+              (index) => GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -50,7 +38,6 @@ class _AccessoriesState extends State<Accessories> {
                         title: womens_wear_list[index]["title"],
                         price: womens_wear_list[index]["price"],
                         image: womens_wear_list[index]["image"],
-                        specs: womens_wear_list[index]["specs"],
                       ),
                     ),
                   );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/products/product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
@@ -9,7 +8,11 @@ class WishList extends StatefulWidget {
   final String image;
   final double price;
 
-  WishList({this.id, this.title, this.image, this.price});
+  WishList(
+      {required this.id,
+      required this.title,
+      required this.image,
+      required this.price});
 
   @override
   _WishListState createState() => _WishListState();
@@ -35,12 +38,12 @@ class _WishListState extends State<WishList> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(
                   wishList.length,
-                  (index) => ReusableCard(
+                  (index) => Container(
                     color: Colors.blueGrey.shade50,
-                    cardChild: Row(
+                    child: Row(
                       children: <Widget>[
-                        ReusableCard(
-                          onPress: () {
+                        GestureDetector(
+                          onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -53,14 +56,16 @@ class _WishListState extends State<WishList> {
                               ),
                             );
                           },
-                          cardHeigth: 100.0,
-                          cardWidth: 100.0,
-                          cardChild: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                  image: AssetImage(wishList[index]["image"]),
-                                  fit: BoxFit.cover),
+                          child: Container(
+                            height: 100.0,
+                            width: 100.0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                    image: AssetImage(wishList[index]["image"]),
+                                    fit: BoxFit.cover),
+                              ),
                             ),
                           ),
                         ),

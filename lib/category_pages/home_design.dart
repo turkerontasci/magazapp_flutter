@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:magazapp_flutter/components/reusable_card.dart';
 import 'package:magazapp_flutter/products/categories.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/screens/product_page.dart';
 
 class HomeDesign extends StatefulWidget {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final int qty;
-
-  HomeDesign({this.id, this.title, this.image, this.price, this.qty});
-
   @override
   _HomeDesignState createState() => _HomeDesignState();
 }
@@ -23,9 +14,7 @@ class _HomeDesignState extends State<HomeDesign> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Text(
-          "${categories[4]["title"]}"
-        ),
+        title: Text("${categories[4]["title"]}"),
         toolbarHeight: 45.0,
         centerTitle: true,
       ),

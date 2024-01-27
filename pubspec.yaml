@@ -5,24 +5,23 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.2.3 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-  font_awesome_flutter: ^9.1.0
-  toast: ^0.1.5
-  flutter_credit_card: ^2.0.0
-  carousel_slider: ^4.0.0
-  badges: ^2.0.1
-  http: ^0.13.3
+  cupertino_icons: ^1.0.6
+  font_awesome_flutter: ^10.6.0
+  flutter_credit_card: ^4.0.1
+  carousel_slider: ^4.2.1
+  badges: ^3.1.2
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.9.1
+  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   android: true

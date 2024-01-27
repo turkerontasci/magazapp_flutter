@@ -6,11 +6,10 @@ class CartList {
   int qty;
 
   CartList({
-    this.id,
-    this.title,
-    this.price,
-    this.image,
-    this.qty,
-});
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.image,
+    required this.qty,
+  });
 }
-
