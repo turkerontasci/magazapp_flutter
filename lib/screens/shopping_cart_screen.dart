@@ -14,12 +14,14 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   @override
   Widget build(BuildContext context) {
     if (cartList.isEmpty) {
-      return Center(
-        child: Text(
-          "Sepetiniz Boş",
-          style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
+      return Scaffold(
+        body: Center(
+          child: Text(
+            "Sepetiniz Boş",
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       );
