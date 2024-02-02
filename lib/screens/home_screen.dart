@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:magazapp_flutter/products/category_product.dart';
 import 'package:magazapp_flutter/products/product.dart';
+import '../category_pages/mens_wear.dart';
+import '../components/header_widget.dart';
 import '../components/item_card_widget.dart';
 import '../components/offers_widget.dart';
-import '../components/row_categories_widget.dart';
 import '../components/row_offers_widget.dart';
+import 'category_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,16 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: <Widget>[
               OffersWidget(
-                height: 275,
+                height: 230,
                 fraction: 0.85,
                 id: lastList[0]["id"],
                 title: lastList[0]["title"],
                 price: lastList[0]["price"],
                 imageAsset: lastList[0]["image"],
               ),
-              RowCategoriesWidget(
-                height: 50,
-                width: 100,
+              HeaderWidget(
+                title: "Fırsatlar",
+                route: MensWear(),
               ),
               SingleChildScrollView(
                 padding: EdgeInsets.only(left: 10.0),
@@ -50,6 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+              ),
+              HeaderWidget(
+                title: "Bugüne Özel",
+                route: CategoryScreen(),
               ),
               GridView.count(
                 shrinkWrap: true,

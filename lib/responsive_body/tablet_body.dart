@@ -6,6 +6,7 @@ import 'package:magazapp_flutter/components/row_categories_widget.dart';
 import 'package:magazapp_flutter/components/row_offers_widget.dart';
 import 'package:magazapp_flutter/screens/category_screen.dart';
 import '../components/custom_appbar.dart';
+import '../components/header_widget.dart';
 import '../products/category_product.dart';
 import '../products/product.dart';
 
@@ -71,7 +72,7 @@ class _TabletBodyState extends State<TabletBody> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.all(10.0),
-              childAspectRatio: 9.0 / 10.0,
+              childAspectRatio: 8.0 / 10.0,
               crossAxisCount: 4,
               children: List.generate(
                 newList.length,
@@ -85,47 +86,6 @@ class _TabletBodyState extends State<TabletBody> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
-    super.key,
-    required this.title,
-    required this.route,
-  });
-
-  final String title;
-  final Widget route;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => route));
-            },
-            child: Text(
-              "Tümünü Gör >",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

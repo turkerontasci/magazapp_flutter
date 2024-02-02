@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../screens/category_screen.dart';
+import 'package:magazapp_flutter/products/categories.dart';
 import '../screens/home_screen.dart';
 import '../screens/product_page.dart';
 import '../screens/profile_screen.dart';
@@ -18,7 +17,6 @@ class _MobileBodyState extends State<MobileBody> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = [
     HomeScreen(),
-    CategoryScreen(),
     ShoppingCartScreen(),
     ProfileScreen()
   ];
@@ -40,7 +38,28 @@ class _MobileBodyState extends State<MobileBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        width: 275,
+        child: ListView(
+          children: List.generate(
+            categories.length,
+            (index) => ListTile(
+              title: Center(
+                child: Text(
+                  "${categories[index]["title"]}",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: Colors.pink,
         toolbarHeight: 45.0,
         centerTitle: true,
@@ -50,6 +69,36 @@ class _MobileBodyState extends State<MobileBody> {
             fontWeight: FontWeight.w800,
             fontSize: 24.0,
             color: Colors.white,
+          ),
+        ),
+        actions: List.generate(
+          1,
+          (index) => IconButton(
+            onPressed: () {},
+            icon: badges.Badge(
+              position: badges.BadgePosition.bottomEnd(
+                bottom: 6,
+                end: -6,
+              ),
+              showBadge: true,
+              badgeStyle: badges.BadgeStyle(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 1.5,
+                ),
+                badgeColor: Colors.pink,
+              ),
+              badgeContent: Text(
+                "3",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              child: Icon(
+                Icons.notifications,
+                color: Colors.white,
+              ),
+            ),
           ),
         ),
       ),
@@ -64,11 +113,6 @@ class _MobileBodyState extends State<MobileBody> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Anasayfa',
-            backgroundColor: Colors.white,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'Kategoriler',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(

@@ -58,7 +58,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     Text(
                       '${totalCalculator().toStringAsFixed(2)} TL',
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),

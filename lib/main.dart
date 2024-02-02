@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
-        backgroundColor: Colors.white,
       ),
       home: MainPage(
         title: 'Magazapp',

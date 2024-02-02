@@ -54,14 +54,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         );
                       },
-                      child: Container(
-                        height: 150.0,
-                        width: 150.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage(lastOrders[index]["image"]),
-                              fit: BoxFit.cover),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 150.0,
+                          width: 150.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(
+                                image: AssetImage(lastOrders[index]["image"]),
+                                fit: BoxFit.cover),
+                          ),
                         ),
                       ),
                     ),
